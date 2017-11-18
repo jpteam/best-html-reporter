@@ -8,6 +8,10 @@
         color: black;
         text-align: center;
       }
+      h2 {
+        color: black;
+        text-align: center;
+      }
 
       p {
         font-weight: bold;
@@ -20,6 +24,7 @@
       body {
         background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/03/Light-wood-wallpaper-background-HD.jpg")
       }
+
 
       #image {
         text-align: center;
@@ -34,17 +39,29 @@
         text-align: center;
         margin-top: 50px;
       }
+      input {
+        height:25px;
+        width:150px;
+      }
+      a.button {
+        -webkit-appearance: button;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 6px 12px;
+        color: black;
+      }
     </style>
   </head>
 
   <body>
     <h1>BEST HTML REPORTER</h1>
-    <img id="image" src="https://udemy-images.udemy.com/course/750x422/634546_5f6d.jpg">
+    <img id="image" src="https://cdn-images-1.medium.com/max/1200/0*PQMtBIcoc5WgH9hx.jpg">
+    <h2>Tired of doing regression testing??? Want to start Automation</h2>
+    <p>Then try something new Protractor!!!</p>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <div id="start">
-      <form action="http://www.protractortest.org/#/">
-        <input style="height:25px;width:150px" type="submit" value="Learn Protractor" />
-      </form>
+      <a href="http://www.protractortest.org/#/" class="button">Start Learning<i class="em em---1"></i> </a>
+      <a href="http://google.com" class="button">Quit <i class="em em--1"></i></a>
     </div>
-    <p>Protractor is an end-to-end test framework for Angular and AngularJS applications. Protractor runs tests against your application running in a real browser, interacting with it as a user would.</p>
   </body>
 </html>
