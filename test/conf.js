@@ -22,6 +22,8 @@ exports.config =
     browser.resetUrl = 'file:///';
     browser.get('file://' + __dirname + '/test.html');
     
-    jasmine.getEnv().addReporter(bestReporter.reporter);
+    jasmine.getEnv().addReporter(bestReporter.init({
+      screenshot: false
+    }));
   }
 };

@@ -4,28 +4,32 @@
  * @author Raj, Nimmi
  */
 
-exports.reporter = {
-  jasmineStarted: function(suiteInfo) {
-    console.log('Running best html reporter..');
-  },
+exports.init = function(config) {
   
-  suiteStarted: function(result) {
-  
-  },
-  
-  specStarted: function(result) {
-  
-  },
-  
-  specDone: function(result) {
-  
-  },
-  
-  suiteDone: function(result) {
-  
-  },
-  
-  jasmineDone: function() {
-  
+  return {
+    jasmineStarted: function(suiteInfo) {
+      console.log('Running best html reporter..');
+      console.log('Config: ', config);
+    },
+    
+    suiteStarted: function(result) {
+      //console.log(result);
+    },
+    
+    specStarted: function(result) {
+      //console.log(result);
+    },
+    
+    specDone: function(result) {
+      //console.log(result);
+    },
+    
+    suiteDone: function(result) {
+      //console.log(result);
+    },
+    
+    jasmineDone: function() {
+    
+    }
   }
 };
