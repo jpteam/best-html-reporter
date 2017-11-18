@@ -18,6 +18,6 @@ exports.config =
   {
     browser.ignoreSynchronization = true;
     browser.resetUrl = 'file:///';
-    browser.get('file://' + __dirname + '/best-html-reporter.html');
+    browser.get('file://' + __dirname + '/test.html');
   }
 };
