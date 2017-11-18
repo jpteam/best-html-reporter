@@ -1,0 +1,6 @@
+- header, visualization, details
+- multiple type of viz
+  - hierarchical
+  - show all expects/tc
+  - as a selection/index mechanism
+- visual explorer (screenshot slideshow)
