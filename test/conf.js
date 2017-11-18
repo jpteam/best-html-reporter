@@ -4,6 +4,8 @@
  * (c) C1X Inc. 2017
  */
 
+var bestReporter = require('../best-html-reporter');
+
 exports.config =
 {
   specs: ['login.js'],
@@ -19,5 +21,7 @@ exports.config =
     browser.ignoreSynchronization = true;
     browser.resetUrl = 'file:///';
     browser.get('file://' + __dirname + '/test.html');
+    
+    jasmine.getEnv().addReporter(bestReporter.reporter);
   }
 };
