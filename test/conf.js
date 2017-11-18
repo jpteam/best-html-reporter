@@ -18,6 +18,6 @@ exports.config =
   {
     browser.ignoreSynchronization = true;
     browser.resetUrl = 'file:///';
-    browser.get('file:///home/nimmi/projects/best-html-reporter/test/best-html-reporter.html')
+    browser.get('file://' + __dirname + '/best-html-reporter.html');
   }
 };
