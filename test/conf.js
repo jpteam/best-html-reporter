@@ -12,12 +12,11 @@ exports.config =
   framework: 'jasmine',
   type: "node",
   directConnect: true,
-  multiCapabilities:
-  [
+  multiCapabilities: [
     {'browserName': 'chrome',chromeOptions: {args: ['--no-sandbox']}, count: 1}
   ],
-  onPrepare : function ()
-  {
+  
+  onPrepare : function() {
     browser.ignoreSynchronization = true;
     browser.resetUrl = 'file:///';
     browser.get('file://' + __dirname + '/test.html');

@@ -6,30 +6,35 @@
 
 exports.init = function(config) {
   
+  var results = {},
+    currentSuite;
+  
   return {
     jasmineStarted: function(suiteInfo) {
-      console.log('Running best html reporter..');
-      console.log('Config: ', config);
+      results.config = config;
+      results.suiteInfo = suiteInfo;
+      results.suites = [];
     },
     
     suiteStarted: function(result) {
-      //console.log(result);
+      currentSuite = result;
+      currentSuite.specs = [];
+      results.suites.push(currentSuite);
     },
     
     specStarted: function(result) {
-      //console.log(result);
     },
     
     specDone: function(result) {
-      //console.log(result);
+      currentSuite.specs.push(result);
     },
     
     suiteDone: function(result) {
-      //console.log(result);
+      currentSuite = null;
     },
     
     jasmineDone: function() {
-    
+      console.log(JSON.stringify(results, null, 4));
     }
   }
 };
