@@ -1,0 +1,26 @@
+{
+  "name": "best-html-reporter",
+  "version": "1.0.0",
+  "description": "HTML reporter for Jasmine / Protractor",
+  "main": "best-html-reporter.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpteam/best-html-reporter.git"
+  },
+  "author": "raj & nimmi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpteam/best-html-reporter/issues"
+  },
+  "homepage": "https://github.com/jpteam/best-html-reporter#readme",
+  "dependencies": {
+    "fs-extra": "^4.0.2",
+    "underscore": "^1.8.3"
+  }
+}
