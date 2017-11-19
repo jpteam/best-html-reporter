@@ -22,7 +22,13 @@ exports.config =
     browser.get('file://' + __dirname + '/test.html');
     
     jasmine.getEnv().addReporter(bestReporter.init({
-      screenshot: false
+      reportDir: '/var/reports',
+      screenshots: "fail",
+      screenshotCB: function(file) {
+        // take screenshot
+        console.log('Take error screenshot ' + file);
+      },
+      xyz: 122
     }));
   }
 };
