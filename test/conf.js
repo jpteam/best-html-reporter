@@ -22,7 +22,7 @@ exports.config =
     browser.get('file://' + __dirname + '/test.html');
     
     jasmine.getEnv().addReporter(bestReporter.init({
-      reportDir: '/var/reports',
+      reportDir: '/tmp/reports',
       screenshots: "fail",
       screenshotCB: function(file) {
         // take screenshot

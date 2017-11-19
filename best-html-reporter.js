@@ -52,7 +52,12 @@ exports.init = function(config) {
     },
     
     jasmineDone: function() {
-      console.log(JSON.stringify(results, null, 4));
+      var fs = require('fs-extra'),
+        json = JSON.stringify(results, null, 4);
+  
+      var tpl = fs.readFileSync(__dirname + '/templates/report.tpl.html','utf8');
+      tpl = tpl.replace('{{results}}', json);
+      fs.writeFileSync(config.reportDir + '/report.html', tpl);
     }
   }
 };
