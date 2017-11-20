@@ -12,6 +12,44 @@
   <script src="report.js"></script>
 </head>
 <body>
+<style>
+
+.grid {
+  border: 1px solid #3697f6;
+  width: 100%;
+  display: table
+}
+.grid-header {
+  border: 1px solid #668db6;
+  background-color: #336799;
+  color: white;
+  width: 100%;
+  font-weight: bold;
+  display: table-row
+}
+.col {
+  border-right: 1px solid black;
+  border-style: solid;
+  display: table-cell;
+  width: 80%;
+  padding: 1px;
+  text-align: center;
+}
+.grid-row {
+ border: 1px solid #668db6;
+  color: black;
+  width: 80%;
+  font-weight: bold;
+  display: table-cell;
+}
+.row {
+  display: table-row;
+  width: 80%;
+  padding: 1px;
+  text-align: center;
+}
+
+</style>
 <div class="container" ng-controller="ReportController">
   <header>
     <div class="title">DSP 2.0 Test Report</div>
@@ -34,15 +72,18 @@
     <h3>Data:</h3>
 
     <div ng-repeat="suite in results.suites">
-
-      <table>
-        <TH><h3><b>Test Cases</b></h3></TH>
-        <TH><h3><b>Result</b></h3></TH>
-        <tr ng-repeat="spec in suite.specs">
-          <td>{{spec.fullName}}</td>
-          <td>{{spec.status}}</td>
-        </tr>
-      </table>
+      <div class="grid">
+        <div class="grid-header">
+          <div class="col">Test Case</div>
+          <div class="col">Result</div>
+        </div>
+        <div class="grid-row">
+          <div class="row" ng-repeat="spec in suite.specs">{{spec.fullName}}</div>
+        </div>
+        <div class="grid-row">
+          <div class="row" ng-repeat="spec in suite.specs">{{spec.status}}</div>
+        </div>
+      </div>
     </div>
   </header>
 </div>
