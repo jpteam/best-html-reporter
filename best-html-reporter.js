@@ -55,9 +55,12 @@ exports.init = function(config) {
       var fs = require('fs-extra'),
         json = JSON.stringify(results, null, 4);
   
-      var tpl = fs.readFileSync(__dirname + '/templates/report.tpl.html','utf8');
+      var tpl = fs.readFileSync(__dirname + '/templates/report-data.js','utf8');
       tpl = tpl.replace('{{results}}', json);
-      fs.writeFileSync(config.reportDir + '/report.html', tpl);
+      fs.writeFileSync(config.reportDir + '/report-data.js', tpl);
+  
+      fs.copySync(__dirname + '/templates/report.tpl.html', config.reportDir + '/report.html');
+      fs.copySync(__dirname + '/templates/report.js', config.reportDir + '/report.js');
     }
   }
 };

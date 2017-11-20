@@ -1,0 +1,1 @@
+registerResult({{results}});
