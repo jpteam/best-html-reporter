@@ -18,24 +18,32 @@
 
     <div class="metric">
       <div class="title">Suites</div>
-      <div class="metric-value">{{results.suites.length}}</div>
+      <div class="metric-value">{{suite}}</div>
     </div>
 
     <div class="metric">
       <div class="title">Test Cases</div>
-      <div class="metric-value">17</div>
+      <div class="metric-value">{{testCase}}</div>
     </div>
 
     <div class="metric">
       <div class="title">Expectations</div>
-      <div class="metric-value">25</div>
+      <div class="metric-value">{{expectations}}</div>
     </div>
 
     <h3>Data:</h3>
 
-    <pre>
-    {{jsonData}}
-    </pre>
+    <div ng-repeat="suite in results.suites">
+
+      <table>
+        <TH><h3><b>Test Cases</b></h3></TH>
+        <TH><h3><b>Result</b></h3></TH>
+        <tr ng-repeat="spec in suite.specs">
+          <td>{{spec.fullName}}</td>
+          <td>{{spec.status}}</td>
+        </tr>
+      </table>
+    </div>
   </header>
 </div>
 </body>
