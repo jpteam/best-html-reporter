@@ -17,6 +17,7 @@ exports.init = function(config) {
     currentSuite;
   
   config.screenshots = config.screenshots || 'none';
+  config.reportDir = config.reportDir || __dirname + '/reports'
   
   return {
     jasmineStarted: function(suiteInfo) {
