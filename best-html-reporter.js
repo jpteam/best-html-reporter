@@ -20,9 +20,10 @@ exports.init = function(config) {
   config.screenshots = config.screenshots || 'none';
 
   if (!config.reportDir) {
-    fs.mkdirs(__dirname + '/reports');
     config.reportDir = __dirname + '/reports';
   }
+
+  fs.mkdirs(config.reportDir);
 
   return {
     jasmineStarted: function(suiteInfo) {
