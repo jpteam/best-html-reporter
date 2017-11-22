@@ -20,12 +20,8 @@ exports.init = function(config) {
   config.screenshots = config.screenshots || 'none';
 
   if (!config.reportDir) {
-    fs.pathExists('../reports').then(function(exists) {
-      if(!exists) {
-        fs.mkdir('../reports');
-      }
-    });
-    config.reportDir = '../reports';
+    fs.mkdirs(__dirname + '/reports');
+    config.reportDir = __dirname + '/reports';
   }
 
   return {
