@@ -9,7 +9,8 @@
  *   screenshotCB: callback function for taking and storing the screenshots.
  */
 
-var _ = require('underscore');
+var _ = require('underscore'),
+   fs = require('fs-extra');
 
 exports.init = function(config) {
   
@@ -17,8 +18,16 @@ exports.init = function(config) {
     currentSuite;
   
   config.screenshots = config.screenshots || 'none';
-  config.reportDir = config.reportDir || __dirname + '/reports'
-  
+
+  if (!config.reportDir) {
+    fs.pathExists('../reports').then(function(exists) {
+      if(!exists) {
+        fs.mkdir('../reports');
+      }
+    });
+    config.reportDir = '../reports';
+  }
+
   return {
     jasmineStarted: function(suiteInfo) {
       results.config = config;
