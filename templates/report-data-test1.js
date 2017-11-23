@@ -1,5 +1,6 @@
 registerResult({
     "config": {
+        "title": "Test Report",
         "reportDir": "/tmp/reports",
         "screenshots": "fail",
         "xyz": 122
