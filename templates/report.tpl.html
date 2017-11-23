@@ -2,78 +2,86 @@
 <html ng-app="app">
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="report.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
   <script>
     function registerResult(result) {
       window.results = result;
     }
   </script>
-  <script src="report-data.js"></script>
+  <script src="report-data-test1.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
   <script src="report.js"></script>
 </head>
 <body>
 <style>
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
 
-.grid {
-  border: 1px solid #3697f6;
-  width: 100%;
-  display: table
-}
-.grid-header {
-  border: 1px solid #668db6;
-  background-color: #336799;
-  color: white;
-  width: 100%;
-  font-weight: bold;
-  display: table-row
-}
-.col {
-  border-right: 1px solid black;
-  border-style: solid;
-  display: table-cell;
-  width: 80%;
-  padding: 1px;
-  text-align: center;
-}
-.grid-row {
- border: 1px solid #668db6;
-  color: black;
-  width: 80%;
-  font-weight: bold;
-  display: table-cell;
-}
-.row {
-  display: table-row;
-  width: 80%;
-  padding: 1px;
-  text-align: center;
-}
+  header {
+    margin-top: 10px;
+  }
+
+  .report-title {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .metrics {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .metric {
+    -webkit-flex: 1;
+    flex: 1;
+  }
+
+  .metric .title {
+    text-align: right;
+    font-size: 12px;
+  }
+
+  .metric .metric-value {
+    text-align: right;
+    font-size: 24px;
+  }
 
 </style>
+
 <div class="container" ng-controller="ReportController">
   <header>
-    <div class="title">DSP 2.0 Test Report</div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="report-title">DSP 2.0 Test Report</div>
+      </div>
+      <div class="col-md-8">
+        <div class="metrics">
+          <div class="metric">
+            <div class="title">Suites</div>
+            <div class="metric-value">{{suite}}</div>
+          </div>
 
-    <div class="metric">
-      <div class="title">Suites</div>
-      <div class="metric-value">{{suite}}</div>
+          <div class="metric">
+            <div class="title">Test Cases</div>
+            <div class="metric-value">{{data.specs}}</div>
+          </div>
+
+          <div class="metric">
+            <div class="title">Expectations</div>
+            <div class="metric-value">{{data.pass}} / {{data.pass + data.fail}}</div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
 
-    <div class="metric">
-      <div class="title">Test Cases</div>
-      <div class="metric-value">{{data.specs}}</div>
-    </div>
 
-    <div class="metric">
-      <div class="title">Passed Expectations</div>
-      <div class="metric-value">{{data.pass}}</div>
-    </div>
- <tes></tes>
-    <div class="metric">
-      <div class="title">Failed Expectations</div>
-      <div class="metric-value">{{data.fail}}</div>
-    </div>
-
+  </header>
+    <!--
     <h3>Data:</h3>
 
     <div ng-repeat="suite in results.suites">
@@ -90,7 +98,8 @@
         </div>
       </div>
     </div>
-  </header>
+    -->
+
 </div>
 </body>
 </html>
