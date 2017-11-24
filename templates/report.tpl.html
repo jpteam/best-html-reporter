@@ -61,17 +61,17 @@
             <div class="metrics">
               <div class="metric">
                 <div class="title">Suites</div>
-                <div class="metric-value">{{suite}}</div>
+                <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
               </div>
 
               <div class="metric">
                 <div class="title">Test Cases</div>
-                <div class="metric-value">{{data.specs}}</div>
+                <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
               </div>
 
               <div class="metric">
                 <div class="title">Expectations</div>
-                <div class="metric-value">{{data.pass}} / {{data.pass + data.fail}}</div>
+                <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
               </div>
 
             </div>
