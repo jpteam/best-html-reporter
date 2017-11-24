@@ -30,30 +30,32 @@ exports.init = function(config) {
     jasmineStarted: function(suiteInfo) {
       results.config = config;
       results.suiteInfo = suiteInfo;
-      results.suites = [];
+      results.children = [];
+      results.type = 'root';
       suiteStack.push(results);
       results.startTime = process.hrtime();
     },
     
     suiteStarted: function(result) {
       var parent = suiteStack[suiteStack.length-1];
-      parent.suites.push(result);
+      parent.children.push(result);
 
+      result.type = 'suite';
       suiteStack.push(result);
 
       currentSuite = result;
       currentSuite.startTime = process.hrtime();
-      currentSuite.specs = [];
-      currentSuite.suites = [];
+      currentSuite.children = [];
     },
     
     specStarted: function(result) {
+      result.type = 'spec';
       result.startTime = process.hrtime();
     },
     
     specDone: function(result) {
       result.endTime = process.hrtime();
-      currentSuite.specs.push(result);
+      currentSuite.children.push(result);
       
       if (config.screenshots !== 'none') {
         var screenshotFileName = config.reportDir + '/screens/' + result.id + '.png';
