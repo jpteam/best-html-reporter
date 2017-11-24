@@ -15,8 +15,8 @@ var _ = require('underscore'),
 exports.init = function(config) {
   
   var results = {},
-    currentSuite;
-  
+    suiteStack = [];
+
   config.screenshots = config.screenshots || 'none';
 
   if (!config.reportDir) {
@@ -26,22 +26,33 @@ exports.init = function(config) {
   fs.mkdirs(config.reportDir);
 
   return {
+
     jasmineStarted: function(suiteInfo) {
       results.config = config;
       results.suiteInfo = suiteInfo;
       results.suites = [];
+      suiteStack.push(results);
+      results.startTime = process.hrtime();
     },
     
     suiteStarted: function(result) {
+      var parent = suiteStack[suiteStack.length-1];
+      parent.suites.push(result);
+
+      suiteStack.push(result);
+
       currentSuite = result;
+      currentSuite.startTime = process.hrtime();
       currentSuite.specs = [];
-      results.suites.push(currentSuite);
+      currentSuite.suites = [];
     },
     
     specStarted: function(result) {
+      result.startTime = process.hrtime();
     },
     
     specDone: function(result) {
+      result.endTime = process.hrtime();
       currentSuite.specs.push(result);
       
       if (config.screenshots !== 'none') {
@@ -51,14 +62,16 @@ exports.init = function(config) {
           config.screenshotCB.call(this, screenshotFileName);
         }
       }
-
     },
     
     suiteDone: function(result) {
-      currentSuite = null;
+      result.endTime = process.hrtime();
+      suiteStack.pop();
     },
     
     jasmineDone: function() {
+      results.endTime = process.hrtime();
+
       var fs = require('fs-extra'),
         json = JSON.stringify(results, null, 4);
   

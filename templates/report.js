@@ -2,19 +2,43 @@ angular.module('app', [])
   .controller('ReportController', function($scope, $locale) {
     $scope.results = results;
     $scope.jsonData = JSON.stringify(results, null, 4);
-    $scope.suite = results.suites.length;
 
-    $scope.expectations = results.suites.reduce(function(suiteTot, suite) {
+    var metrics = {
+      totalSuites: results.suites.length,
+      passedSuites: 0,
+      totalSpecs: 0,
+      passedSpecs: 0,
+      totalExp: 0,
+      passedExp: 0
+    };
 
-      suiteTot.totalTest += suite.specs.length;
+    for (var i = 0; i < results.suites.length; i++) {
+      var thisSuite = results.suites[i],
+        numFailedSpecs = 0, // failed specs in this suite.
+        numPassedExp = 0;
 
-      var specCount = suite.specs.reduce(function(specTot, spec) {
+      for (var j = 0; j < thisSuite.specs.length; j++) {
+        var thisSpec = thisSuite.specs[j],
+          failedExpectations = thisSpec.failedExpectations,
+          passedExpectations = thisSpec.passedExpectations;
 
-         specTot.testPass += spec.status == "passed" ? 1 : 0;
+        if (failedExpectations.length > 0) {
+          numFailedSpecs ++;
+        }
 
-        return {testPass: specTot.testPass, fail: specTot.fail + spec.failedExpectations.length, pass: specTot.pass + spec.passedExpectations.length};
-      }, {testPass:0, fail:0, pass:0})
+        numPassedExp += passedExpectations.length;
 
-      return {testPass: suiteTot.testPass + specCount.testPass, totalTest: suiteTot.totalTest, fail: suiteTot.fail + specCount.fail, pass: suiteTot.pass + specCount.pass};
-    }, {testPass:0, totalTest:0, fail:0, pass:0});
+        metrics.totalExp += (passedExpectations.length + failedExpectations.length);
+        metrics.passedExp += passedExpectations.length;
+      }
+
+      metrics.totalSpecs += thisSuite.specs.length;
+      metrics.passedSpecs += (thisSuite.specs.length - numFailedSpecs);
+
+      if (numFailedSpecs == 0) {
+        metrics.passedSuites ++;
+      }
+    }
+
+    $scope.metrics = metrics;
   });
