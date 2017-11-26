@@ -32,8 +32,9 @@ exports.init = function(config) {
       results.suiteInfo = suiteInfo;
       results.children = [];
       results.type = 'root';
-      suiteStack.push(results);
       results.startTime = process.hrtime();
+
+      suiteStack.push(results);
     },
     
     suiteStarted: function(result) {

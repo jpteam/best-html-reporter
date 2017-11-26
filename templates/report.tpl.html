@@ -10,7 +10,7 @@
         window.results = result;
       }
     </script>
-    <script src="report-data-test1.js"></script>
+    <script src="report-data-test3.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="report.js"></script>
   </head>
@@ -37,6 +37,7 @@
       .metric {
         -webkit-flex: 1;
         flex: 1;
+        padding: 5px;
       }
 
       .metric .title {
@@ -47,6 +48,21 @@
       .metric .metric-value {
         text-align: right;
         font-size: 24px;
+      }
+
+      .thin-progress-bar {
+        width: 100%;
+        height: 4px;
+        display: -webkit-flex;
+        display: flex;
+      }
+
+      .progress-red {
+        background: red;
+      }
+
+      .progress-green {
+        background: green;
       }
 
     </style>
@@ -62,43 +78,39 @@
               <div class="metric">
                 <div class="title">Suites</div>
                 <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
+                <div class="thin-progress-bar">
+                  <div class="progress-green" style="width:24%"></div>
+                  <div class="progress-red" style="width:76%"></div>
+                </div>
               </div>
 
               <div class="metric">
                 <div class="title">Test Cases</div>
                 <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
+                <div class="thin-progress-bar">
+                  <div class="progress-green" style="width:35%"></div>
+                  <div class="progress-red" style="width:65%"></div>
+                </div>
               </div>
 
               <div class="metric">
                 <div class="title">Expectations</div>
                 <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
+                <div class="thin-progress-bar">
+                  <div class="progress-green" style="width:45%"></div>
+                  <div class="progress-red" style="width:55%"></div>
+                </div>
+              </div>
+
+              <div class="metric">
+                <div class="title">Time taken</div>
+                <div class="metric-value">{{metrics.timeMin}}m:{{metrics.timeSec}}s</div>
               </div>
 
             </div>
           </div>
         </div>
       </header>
-
-
-
-        <!--
-        <h3>Data:</h3>
-
-        <div ng-repeat="suite in results.suites">
-          <div class="grid">
-            <div class="grid-header">
-              <div class="col">Test Case</div>
-              <div class="col">Result</div>
-            </div>
-            <div class="grid-row">
-              <div class="row" ng-repeat="spec in suite.specs">{{spec.fullName}}</div>
-            </div>
-            <div class="grid-row">
-              <div class="row" ng-repeat="spec in suite.specs">{{spec.status}}</div>
-            </div>
-          </div>
-        </div>
-        -->
 
     </div>
   </body>

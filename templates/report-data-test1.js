@@ -1,6 +1,5 @@
 registerResult({
     "config": {
-        "title": "Test Report",
         "reportDir": "/tmp/reports",
         "screenshots": "fail",
         "xyz": 122
@@ -9,16 +8,21 @@ registerResult({
         "totalSpecsDefined": 4,
         "order": {
             "random": false,
-            "seed": "05251"
+            "seed": "52896"
         }
     },
-    "suites": [
+    "children": [
         {
             "id": "suite1",
             "description": "TEST",
             "fullName": "TEST",
             "failedExpectations": [],
-            "specs": [
+            "type": "suite",
+            "startTime": [
+                157229,
+                216067252
+            ],
+            "children": [
                 {
                     "id": "spec0",
                     "description": "1. Check the page header",
@@ -33,7 +37,16 @@ registerResult({
                         }
                     ],
                     "pendingReason": "",
-                    "status": "passed"
+                    "type": "spec",
+                    "startTime": [
+                        157229,
+                        216561871
+                    ],
+                    "status": "passed",
+                    "endTime": [
+                        157239,
+                        84441073
+                    ]
                 },
                 {
                     "id": "spec1",
@@ -51,7 +64,16 @@ registerResult({
                     ],
                     "passedExpectations": [],
                     "pendingReason": "",
-                    "status": "failed"
+                    "type": "spec",
+                    "startTime": [
+                        157239,
+                        84569780
+                    ],
+                    "status": "failed",
+                    "endTime": [
+                        157239,
+                        115446203
+                    ]
                 },
                 {
                     "id": "spec2",
@@ -69,7 +91,16 @@ registerResult({
                     ],
                     "passedExpectations": [],
                     "pendingReason": "",
-                    "status": "failed"
+                    "type": "spec",
+                    "startTime": [
+                        157239,
+                        115543293
+                    ],
+                    "status": "failed",
+                    "endTime": [
+                        157240,
+                        752645140
+                    ]
                 },
                 {
                     "id": "spec3",
@@ -87,10 +118,32 @@ registerResult({
                     ],
                     "passedExpectations": [],
                     "pendingReason": "",
-                    "status": "failed"
+                    "type": "spec",
+                    "startTime": [
+                        157240,
+                        752693141
+                    ],
+                    "status": "failed",
+                    "endTime": [
+                        157243,
+                        780045698
+                    ]
                 }
             ],
-            "status": "finished"
+            "status": "finished",
+            "endTime": [
+                157243,
+                780446067
+            ]
         }
+    ],
+    "type": "root",
+    "startTime": [
+        157229,
+        214540143
+    ],
+    "endTime": [
+        157243,
+        782435305
     ]
 });
