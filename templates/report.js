@@ -11,8 +11,8 @@ angular.module('app', [])
         passedSpecs: 0,
         totalExp: 0,
         passedExp: 0,
-        timeMin: '02',
-        timeSec: '25'
+        timeMin: 0,
+        timeSec: 0
       };
 
       function traverse(node) {
@@ -54,6 +54,15 @@ angular.module('app', [])
       }
 
       traverse(results);
+
+      results.startTime = results.startTime[0] + (results.startTime[1] * (1e-9));
+      results.endTime = results.endTime[0] + (results.endTime[1] * (1e-9));
+
+      metrics.timeMin = Math.floor((results.endTime - results.startTime) / 60);
+      metrics.timeSec = Math.floor((results.endTime - results.startTime) - (metrics.timeMin * 60));
+
+      metrics.timeMin = metrics.timeMin < 10 ? "0" + metrics.timeMin : '';
+      metrics.timeSec = metrics.timeSec < 10 ? "0" + metrics.timeSec : '';
 
       // determine total time.
       // TODO: nimmi, take the data in results.startTime & results.endTime, and calculate metrics.timeMin & metrics.timeSec
