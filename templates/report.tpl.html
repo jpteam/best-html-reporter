@@ -49,11 +49,11 @@
         font-size: 24px;
       }
 
-      thin-progress-bar {
-        background: red;
-        height: 4px;
+      .thin-progress-bar {
+        height: 16px;
         display: -webkit-flex;
         display: flex;
+        padding: 6px;
       }
 
       .progress-red {
@@ -77,19 +77,28 @@
           <div class="metric">
             <div class="title">Suites</div>
             <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
-            <thin-progress-bar pass="{{ metrics.passedSuites / metrics.totalSuites}}"></thin-progress-bar>
+            <div class="thin-progress-bar">
+              <div class="progress-green" style="width:{{(metrics.passedSuites / metrics.totalSuites) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalSuites - metrics.passedSuites) / metrics.totalSuites) * 100}}%"></div>
+            </div>
           </div>
 
           <div class="metric">
             <div class="title">Test Cases</div>
             <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
-            <thin-progress-bar pass="{{metrics.passedSpecs / metrics.totalSpecs}}"></thin-progress-bar>
+            <div class="thin-progress-bar">
+              <div class="progress-green" style="width:{{(metrics.passedSpecs / metrics.totalSpecs) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalSpecs - metrics.passedSpecs) / metrics.totalSpecs) * 100}}%"></div>
+            </div>
           </div>
 
           <div class="metric">
             <div class="title">Expectations</div>
             <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
-            <thin-progress-bar pass="{{metrics.passedExp / metrics.totalExp}}">
+            <div class="thin-progress-bar">
+              <div class="progress-green" style="width:{{(metrics.passedExp / metrics.totalExp) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalExp - metrics.passedExp) / metrics.totalExp) * 100}}%"></div>
+            </div>
           </div>
 
           <div class="metric">
