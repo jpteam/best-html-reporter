@@ -1,21 +1,21 @@
 <!doctype html>
 <html ng-app="app">
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="report.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="report.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <script>
+  <script>
       function registerResult(result) {
         window.results = result;
       }
     </script>
-    <script src="report-data-test3.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-    <script src="report.js"></script>
-  </head>
-  <body>
-    <style>
+  <script src="report-data.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+  <script src="report.js"></script>
+</head>
+<body>
+<style>
       body {
         font-family: 'Roboto', sans-serif;
       }
@@ -37,7 +37,6 @@
       .metric {
         -webkit-flex: 1;
         flex: 1;
-        padding: 5px;
       }
 
       .metric .title {
@@ -50,8 +49,8 @@
         font-size: 24px;
       }
 
-      .thin-progress-bar {
-        width: 100%;
+      thin-progress-bar {
+        background: red;
         height: 4px;
         display: -webkit-flex;
         display: flex;
@@ -67,51 +66,42 @@
 
     </style>
 
-    <div class="container" ng-controller="ReportController">
-      <header>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="report-title">{{results.config.title}}</div>
+<div class="container" ng-controller="ReportController">
+  <header>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="report-title">{{results.config.title}}</div>
+      </div>
+      <div class="col-md-8">
+        <div class="metrics">
+          <div class="metric">
+            <div class="title">Suites</div>
+            <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
+            <thin-progress-bar pass="{{ metrics.passedSuites / metrics.totalSuites}}"></thin-progress-bar>
           </div>
-          <div class="col-md-8">
-            <div class="metrics">
-              <div class="metric">
-                <div class="title">Suites</div>
-                <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
-                <div class="thin-progress-bar">
-                  <div class="progress-green" style="width:24%"></div>
-                  <div class="progress-red" style="width:76%"></div>
-                </div>
-              </div>
 
-              <div class="metric">
-                <div class="title">Test Cases</div>
-                <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
-                <div class="thin-progress-bar">
-                  <div class="progress-green" style="width:35%"></div>
-                  <div class="progress-red" style="width:65%"></div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <div class="title">Expectations</div>
-                <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
-                <div class="thin-progress-bar">
-                  <div class="progress-green" style="width:45%"></div>
-                  <div class="progress-red" style="width:55%"></div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <div class="title">Time taken</div>
-                <div class="metric-value">{{metrics.timeMin}}m:{{metrics.timeSec}}s</div>
-              </div>
-
-            </div>
+          <div class="metric">
+            <div class="title">Test Cases</div>
+            <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
+            <thin-progress-bar pass="{{metrics.passedSpecs / metrics.totalSpecs}}"></thin-progress-bar>
           </div>
+
+          <div class="metric">
+            <div class="title">Expectations</div>
+            <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
+            <thin-progress-bar pass="{{metrics.passedExp / metrics.totalExp}}">
+          </div>
+
+          <div class="metric">
+            <div class="title">Time taken</div>
+            <div class="metric-value">{{metrics.timeMin}}m:{{metrics.timeSec}}s</div>
+          </div>
+
         </div>
-      </header>
-
+      </div>
     </div>
-  </body>
+  </header>
+
+</div>
+</body>
 </html>
