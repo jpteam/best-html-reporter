@@ -77,7 +77,7 @@
               <div class="metric">
                 <div class="title">Suites</div>
                 <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
-                <div class="thin-progress-bar">
+                <div class="thin-progress-bar" ng-if="metrics.totalSuites > 0">
                   <div class="progress-green" style="width:{{(metrics.passedSuites / metrics.totalSuites) * 100}}%"></div>
                   <div class="progress-red" style="width:{{((metrics.totalSuites - metrics.passedSuites) / metrics.totalSuites) * 100}}%"></div>
                 </div>
@@ -86,7 +86,7 @@
               <div class="metric">
                 <div class="title">Test Cases</div>
                 <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
-                <div class="thin-progress-bar">
+                <div class="thin-progress-bar" ng-if="metrics.totalSpecs > 0">
                   <div class="progress-green" style="width:{{(metrics.passedSpecs / metrics.totalSpecs) * 100}}%"></div>
                   <div class="progress-red" style="width:{{((metrics.totalSpecs - metrics.passedSpecs) / metrics.totalSpecs) * 100}}%"></div>
                 </div>
@@ -95,7 +95,7 @@
               <div class="metric">
                 <div class="title">Expectations</div>
                 <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
-                <div class="thin-progress-bar">
+                <div class="thin-progress-bar" ng-if="metrics.totalExp > 0">
                   <div class="progress-green" style="width:{{(metrics.passedExp / metrics.totalExp) * 100}}%"></div>
                   <div class="progress-red" style="width:{{((metrics.totalExp - metrics.passedExp) / metrics.totalExp) * 100}}%"></div>
                 </div>
