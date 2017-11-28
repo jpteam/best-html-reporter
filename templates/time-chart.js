@@ -69,7 +69,6 @@ angular.module('app')
         }
       }
 
-      console.log('data', $scope.data);
       filterSpecs($scope.data);
       $scope.specs = specs;
       //$scope.data = data;
