@@ -62,11 +62,8 @@ angular.module('app', [])
       metrics.timeMin = Math.floor(secDiff / 60);
       metrics.timeSec = Math.floor(secDiff - (metrics.timeMin * 60));
 
-      metrics.timeMin = metrics.timeMin < 10 ? "0" + metrics.timeMin : metrics.timeMin;
-      metrics.timeSec = metrics.timeSec < 10 ? "0" + metrics.timeSec : metrics.timeSec;
-
-      // determine total time.
-      // TODO: nimmi, take the data in results.startTime & results.endTime, and calculate metrics.timeMin & metrics.timeSec
+      if (metrics.timeMin < 10) { metrics.timeMin = '0' + metrics.timeMin }
+      if (metrics.timeSec < 10) { metrics.timeSec = '0' + metrics.timeSec }
 
       return metrics;
     }
