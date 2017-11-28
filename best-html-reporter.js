@@ -84,6 +84,7 @@ exports.init = function(config) {
   
       fs.copySync(__dirname + '/templates/report.tpl.html', config.reportDir + '/report.html');
       fs.copySync(__dirname + '/templates/report.js', config.reportDir + '/report.js');
+      fs.copySync(__dirname + '/templates/report.css', config.reportDir + '/report.css');
     }
   }
 };

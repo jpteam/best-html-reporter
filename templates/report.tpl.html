@@ -12,7 +12,10 @@
     </script>
     <script src="report-data-test3.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
     <script src="report.js"></script>
+    <script src="time-chart.js"></script>
   </head>
   <body>
     <div class="container" ng-controller="ReportController">
@@ -54,9 +57,12 @@
                 <div class="title">Time taken</div>
                 <div class="metric-value">{{metrics.timeMin}}m:{{metrics.timeSec}}s</div>
               </div>
-
             </div>
           </div>
+        </div>
+
+        <div class="row">
+          <time-chart data="results"></time-chart>
         </div>
       </header>
 

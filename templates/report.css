@@ -68,3 +68,15 @@ header {
   animation-name: green-fade;
   animation-duration: 3s;
 }
+
+.time-chart {
+  margin-top: 30px;
+}
+
+.time-chart rect {
+  fill: steelblue;
+}
+
+.time-chart rect.fail {
+  fill: red;
+}
