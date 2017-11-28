@@ -10,7 +10,7 @@
         window.results = result;
       }
     </script>
-    <script src="report-data-test3.js"></script>
+    <script src="report-data.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="report.js"></script>
   </head>
@@ -37,7 +37,6 @@
       .metric {
         -webkit-flex: 1;
         flex: 1;
-        padding: 5px;
       }
 
       .metric .title {
@@ -51,10 +50,10 @@
       }
 
       .thin-progress-bar {
-        width: 100%;
-        height: 4px;
+        height: 16px;
         display: -webkit-flex;
         display: flex;
+        padding: 6px;
       }
 
       .progress-red {
@@ -79,8 +78,8 @@
                 <div class="title">Suites</div>
                 <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
                 <div class="thin-progress-bar">
-                  <div class="progress-green" style="width:24%"></div>
-                  <div class="progress-red" style="width:76%"></div>
+                  <div class="progress-green" style="width:{{(metrics.passedSuites / metrics.totalSuites) * 100}}%"></div>
+                  <div class="progress-red" style="width:{{((metrics.totalSuites - metrics.passedSuites) / metrics.totalSuites) * 100}}%"></div>
                 </div>
               </div>
 
@@ -88,8 +87,8 @@
                 <div class="title">Test Cases</div>
                 <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
                 <div class="thin-progress-bar">
-                  <div class="progress-green" style="width:35%"></div>
-                  <div class="progress-red" style="width:65%"></div>
+                  <div class="progress-green" style="width:{{(metrics.passedSpecs / metrics.totalSpecs) * 100}}%"></div>
+                  <div class="progress-red" style="width:{{((metrics.totalSpecs - metrics.passedSpecs) / metrics.totalSpecs) * 100}}%"></div>
                 </div>
               </div>
 
@@ -97,8 +96,8 @@
                 <div class="title">Expectations</div>
                 <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
                 <div class="thin-progress-bar">
-                  <div class="progress-green" style="width:45%"></div>
-                  <div class="progress-red" style="width:55%"></div>
+                  <div class="progress-green" style="width:{{(metrics.passedExp / metrics.totalExp) * 100}}%"></div>
+                  <div class="progress-red" style="width:{{((metrics.totalExp - metrics.passedExp) / metrics.totalExp) * 100}}%"></div>
                 </div>
               </div>
 
