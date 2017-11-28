@@ -1,7 +1,8 @@
 registerResult({
     "config": {
         "reportDir": "/tmp/reports",
-        "screenshots": "fail"
+        "screenshots": "fail",
+        "title": "DSP 2.0 Tests"
     },
     "suiteInfo": {
         "totalSpecsDefined": 251,

@@ -1,3 +1,70 @@
-header {
+body {
+  font-family: 'Roboto', sans-serif;
+}
 
+header {
+  margin-top: 10px;
+}
+
+.report-title {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.metrics {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.metric {
+  -webkit-flex: 1;
+  flex: 1;
+  padding: 6px;
+}
+
+.metric .title {
+  text-align: right;
+  font-size: 12px;
+}
+
+.metric .metric-value {
+  text-align: right;
+  font-size: 24px;
+}
+
+@keyframes bar {
+  from {width: 0;}
+  to {width: 100%;}
+}
+
+.thin-progress-bar {
+  height: 4px;
+  display: -webkit-flex;
+  display: flex;
+  animation-name: bar;
+  animation-duration: 3s;
+}
+
+@keyframes red-fade {
+  from {background-color: white;}
+  to {background-color: #eb8c7f;}
+}
+
+@keyframes green-fade {
+  from {background-color: white;}
+  to {background-color: #75cc68;}
+}
+
+.progress-red {
+  background-color: #eb8c7f;
+  background-image: url(https://www.transparenttextures.com/patterns/black-twill.png);
+  animation-name: red-fade;
+  animation-duration: 3s;
+}
+
+.progress-green {
+  background-color: #75cc68;
+  background-image: url(https://www.transparenttextures.com/patterns/black-twill.png);
+  animation-name: green-fade;
+  animation-duration: 3s;
 }
