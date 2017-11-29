@@ -2,8 +2,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.container {
+  padding: 0;
+}
+
 header {
   margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+header.title {
+  width: 33%;
 }
 
 .report-title {
@@ -12,8 +23,8 @@ header {
 }
 
 .metrics {
-  display: -webkit-flex;
   display: flex;
+  width: 60%;
 }
 
 .metric {
@@ -79,4 +90,18 @@ header {
 
 .time-chart rect.fail {
   fill: red;
+}
+
+.no-tests {
+  text-align: center;
+  background: #eee;
+  margin-top: 50px;
+  border: 1px solid #ccc;
+  font-size: 36px;
+  padding: 50px;
+}
+
+.first-fail .path {
+  font-size: 11px;
+  color: #888;
 }

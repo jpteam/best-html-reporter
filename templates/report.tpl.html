@@ -11,60 +11,72 @@
       }
     </script>
     <script src="report-data-test3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
     <script src="report.js"></script>
+    <script src="lib.js"></script>
     <script src="time-chart.js"></script>
   </head>
   <body>
     <div class="container" ng-controller="ReportController">
       <header>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="report-title">{{results.config.title}}</div>
-          </div>
-          <div class="col-md-8">
-            <div class="metrics">
-              <div class="metric">
-                <div class="title">Suites</div>
-                <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
-                <div class="thin-progress-bar" ng-if="metrics.totalSuites > 0">
-                  <div class="progress-green" style="width:{{(metrics.passedSuites / metrics.totalSuites) * 100}}%"></div>
-                  <div class="progress-red" style="width:{{((metrics.totalSuites - metrics.passedSuites) / metrics.totalSuites) * 100}}%"></div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <div class="title">Test Cases</div>
-                <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
-                <div class="thin-progress-bar" ng-if="metrics.totalSpecs > 0">
-                  <div class="progress-green" style="width:{{(metrics.passedSpecs / metrics.totalSpecs) * 100}}%"></div>
-                  <div class="progress-red" style="width:{{((metrics.totalSpecs - metrics.passedSpecs) / metrics.totalSpecs) * 100}}%"></div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <div class="title">Expectations</div>
-                <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
-                <div class="thin-progress-bar" ng-if="metrics.totalExp > 0">
-                  <div class="progress-green" style="width:{{(metrics.passedExp / metrics.totalExp) * 100}}%"></div>
-                  <div class="progress-red" style="width:{{((metrics.totalExp - metrics.passedExp) / metrics.totalExp) * 100}}%"></div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <div class="title">Time taken</div>
-                <div class="metric-value">{{metrics.timeMin}}m:{{metrics.timeSec}}s</div>
-              </div>
+        <div class="report-title">{{results.config.title}}</div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="title">Suites</div>
+            <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
+            <div class="thin-progress-bar" ng-if="metrics.totalSuites > 0">
+              <div class="progress-green" style="width:{{(metrics.passedSuites / metrics.totalSuites) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalSuites - metrics.passedSuites) / metrics.totalSuites) * 100}}%"></div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <time-chart data="results"></time-chart>
+          <div class="metric">
+            <div class="title">Specs</div>
+            <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
+            <div class="thin-progress-bar" ng-if="metrics.totalSpecs > 0">
+              <div class="progress-green" style="width:{{(metrics.passedSpecs / metrics.totalSpecs) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalSpecs - metrics.passedSpecs) / metrics.totalSpecs) * 100}}%"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="title">Expectations</div>
+            <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
+            <div class="thin-progress-bar" ng-if="metrics.totalExp > 0">
+              <div class="progress-green" style="width:{{(metrics.passedExp / metrics.totalExp) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalExp - metrics.passedExp) / metrics.totalExp) * 100}}%"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="title">Time taken</div>
+            <div class="metric-value">{{metrics.timeTaken}}</div>
+          </div>
         </div>
       </header>
+
+      <div class="no-tests" ng-if="metrics.totalSpecs == 0">
+        There are no tests defined!
+      </div>
+
+      <div class="has-tests" ng-if="metrics.totalSpecs > 0">
+        <time-chart data="results"></time-chart>
+        <div class="first-fail" ng-if="!allPass">
+          <h4>First Failure</h4>
+          <div class="path">
+            {{firstFail[1]}}
+          </div>
+          <div class="msg">
+            {{firstFail[0].description}}
+          </div>
+          <div class="expect">
+
+          </div>
+        </div>
+      </div>
 
     </div>
   </body>

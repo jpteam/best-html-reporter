@@ -1,8 +1,9 @@
 /**
- * Chart that shows time taken for each test case.
+ * Sunburst
  */
 angular.module('app')
-  .directive('timeChart', function () {
+
+.directive('squareChart', function () {
 
   return {
     restrict: 'E',
@@ -11,8 +12,9 @@ angular.module('app')
     },
     link: function (scope, element) {
 
-      var width = 1140,
-        height = 120,
+      window.console.log('*** Timechart!!');
+      var width = element.width(),
+        height = 100,
         specs = scope.specs;
 
       var chart = d3.select(element[0])
@@ -22,14 +24,11 @@ angular.module('app')
         .attr('height', height);
 
       var y = d3.scale.linear()
-        .range([height - 20, 0]);
+        .range([height, 0]);
 
       y.domain([0, d3.max(specs, function(d) { return d.endTime[0] - d.startTime[0] + 2; })]);
 
       var barWidth = width / specs.length;
-      if (barWidth > 30) {
-        barWidth = 30;
-      }
 
       var bar = chart.selectAll("g")
         .data(specs)
@@ -38,12 +37,13 @@ angular.module('app')
 
       bar.append("rect")
         .attr("y", function(d) {
+          console.log('d', d);
           var tm = d.endTime[0] - d.startTime[0] + 2;
           return y(tm);
         })
         .attr("height", function(d) {
           var tm = d.endTime[0] - d.startTime[0] + 2;
-          return height - y(tm) - 20;
+          return height - y(tm);
         })
         .attr("width", barWidth - 1)
         .attr("class", function(d) {
@@ -55,7 +55,21 @@ angular.module('app')
 
     }, // link fn
     controller: ['$scope', function($scope) {
-      $scope.specs = lib.getAllSpecs($scope.data);
+
+      var specs = [];
+      function filterSpecs(node) {
+        if (node.type == 'spec') {
+          specs.push(node);
+        } else {
+          for (var i = 0; i < node.children.length; i++) {
+            filterSpecs(node.children[i]);
+          }
+        }
+      }
+
+      filterSpecs($scope.data);
+      $scope.specs = specs;
+      //$scope.data = data;
     }]
   };
 });
