@@ -101,7 +101,19 @@ header.title {
   padding: 50px;
 }
 
+.first-fail {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 10px;
+  background: #f9e7e7;
+}
+
 .first-fail .path {
   font-size: 11px;
   color: #888;
+}
+
+.first-fail h4 {
+  color: #bf2f2f;
+  font-size: 20px;
 }

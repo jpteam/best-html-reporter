@@ -115,13 +115,11 @@
         }
       } else {
         if (node.children) {
-          console.log('push ', node);
           ancestors.push(node);
           for (var i = 0; i < node.children.length; i++) {
             traverse(ancestors, node.children[i]);
           }
           ancestors.pop();
-          console.log('pop');
         }
 
       }
