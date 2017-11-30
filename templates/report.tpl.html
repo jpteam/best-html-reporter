@@ -85,7 +85,7 @@
           <div class="path">{{suite.path}}</div>
           <div class="spec" ng-repeat="spec in suite.specs">
             <div class="desc">
-              <div class="msg">
+              <div id="{{spec.id}}" class="msg">
                 {{spec.description}}
               </div>
 
