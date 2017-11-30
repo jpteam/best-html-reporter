@@ -147,5 +147,8 @@ header.title {
 
 .d3-text {
   font-family: 'Roboto', sans-serif;
-  font-size: 12px
+  font-size: 11px;
+  width: 200px;
+  padding: 5px;
+  background: #eee;
 }
