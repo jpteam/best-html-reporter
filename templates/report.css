@@ -144,3 +144,8 @@ header.title {
 .spec .expect-pass {
   color: green;
 }
+
+.d3-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px
+}
