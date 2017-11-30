@@ -2,6 +2,7 @@
  * Chart that shows time taken for each test case.
  */
 angular.module('app')
+
   .directive('timeChart', function () {
 
   return {
@@ -15,11 +16,22 @@ angular.module('app')
         height = 120,
         specs = scope.specs;
 
+      console.log(specs);
+
+      var tip = d3.tip()
+      .attr('class', 'd3-text')
+      .html(function(d) {
+        return "<span><b>Test Case: </b>" + d.description + "</span>";
+      });
+
+
       var chart = d3.select(element[0])
         .append('svg')
         .attr('class', 'time-chart')
         .attr('width', width)
         .attr('height', height);
+
+      chart.call(tip);
 
       var y = d3.scale.linear()
         .range([height - 20, 0]);
@@ -50,7 +62,9 @@ angular.module('app')
           if (d.status != 'passed') {
             return 'fail';
           }
-        });
+        })
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
 
 
     }, // link fn
