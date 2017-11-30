@@ -186,6 +186,6 @@ header.title {
   background-color: rgb(128, 255, 128);
 }
 
-.time-chart rect.fill {
+.time-chart rect.selected {
   fill: rgb(128, 255, 128);
 }
