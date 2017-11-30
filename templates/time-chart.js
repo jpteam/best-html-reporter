@@ -43,6 +43,8 @@ angular.module('app')
         barWidth = 30;
       }
 
+      var prevClickedId, prevClickedTile;
+
       var bar = chart.selectAll("g")
         .data(specs)
         .enter().append("g")
@@ -63,12 +65,18 @@ angular.module('app')
             return 'fail';
           }
         })
-        .on("click", function(d) {
-          window.location.href="#" + d.id;
-          $('.msg').removeClass('active');
+        .on("click", function (d){
+          $('html,body').animate({
+            scrollTop: $("#" + d.id).offset().top},
+            'slow');
+
           $("#"+ d.id).addClass('active');
-          $('rect').removeClass('active fill');
-          $(this).addClass('active fill');
+          $(prevClickedId).removeClass('active');
+          $(this).addClass('active selected');
+          $(prevClickedTile).removeClass('active selected');
+
+          prevClickedId = "#"+ d.id;
+          prevClickedTile = this;
         })
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);
