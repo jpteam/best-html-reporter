@@ -181,3 +181,11 @@ header.title {
   padding: 5px;
   background: #eee;
 }
+
+.active {
+  background-color: rgb(128, 255, 128);
+}
+
+.time-chart rect.fill {
+  fill: rgb(128, 255, 128);
+}
