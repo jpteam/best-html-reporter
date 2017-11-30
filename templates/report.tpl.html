@@ -77,9 +77,6 @@
           <div class="expect expect-fail" ng-repeat="exp in firstFail[0].failedExpectations">
             - {{exp.message}}
           </div>
-          <div class="expect expect-pass" ng-repeat="exp in firstFail[0].passedExpectations">
-            - {{exp.message}}
-          </div>
         </div>
       </div>
 
@@ -87,12 +84,24 @@
         <div class="suite" ng-repeat="suite in allSpecs">
           <div class="path">{{suite.path}}</div>
           <div class="spec" ng-repeat="spec in suite.specs">
-            <div class="msg">
-              {{spec.description}}
-            </div>
+            <div class="desc">
+              <div class="msg">
+                {{spec.description}}
+              </div>
 
-            <div class="expect expect-fail" ng-repeat="exp in spec.failedExpectations">
-              - {{exp.message}}
+              <div class="expect expect-fail" ng-repeat="exp in spec.failedExpectations">
+                - {{exp.message}}
+              </div>
+            </div>
+            <div class="pass-fail-box">
+              <div class="num-pass-expects" ng-if="spec.passedExpectations.length > 0">
+                {{spec.passedExpectations.length}}
+              </div>
+            </div>
+            <div class="pass-fail-box">
+              <div class="num-fail-expects" ng-if="spec.failedExpectations.length > 0">
+                {{spec.failedExpectations.length}}
+              </div>
             </div>
           </div>
 

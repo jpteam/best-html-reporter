@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
+  background: #fafafa;
 }
 
 .container {
@@ -111,15 +112,24 @@ header.title {
 .suite {
   border: 1px solid #ccc;
   border-radius: 2px;
+  background: white;
   margin: 10px 0;
-  padding: 5px;
   font-size: 12px;
 }
 
 .suite .path {
   font-size: 14px;
-  padding: 10px 0;
+  padding: 10px 5px;
   color: #888;
+}
+
+.spec {
+  border-top: 1px solid #eee;
+  display: flex;
+}
+
+.spec .desc {
+  padding: 5px;
 }
 
 .spec .path {
@@ -143,6 +153,25 @@ header.title {
 
 .spec .expect-pass {
   color: green;
+}
+
+.spec .desc {
+  flex-grow: 1;
+}
+
+.spec .pass-fail-box {
+  flex: 0 0 70px;
+  text-align: center;
+}
+
+.spec .num-pass-expects {
+  background: #d1e8d1;
+  padding-top: 10px;
+}
+
+.spec .num-fail-expects {
+  background: #fdd9d9;
+  padding-top: 10px;
 }
 
 .d3-text {
