@@ -105,10 +105,24 @@ header.title {
   border: 1px solid #ddd;
   border-radius: 2px;
   padding: 10px;
-  background: #f9e7e7;
+  background: #fff8f8;
 }
 
-.first-fail .path {
+.suite {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.suite .path {
+  font-size: 14px;
+  padding: 10px 0;
+  color: #888;
+}
+
+.spec .path {
   font-size: 11px;
   color: #888;
 }
@@ -116,4 +130,17 @@ header.title {
 .first-fail h4 {
   color: #bf2f2f;
   font-size: 20px;
+}
+
+.spec .expect {
+  font-size: 12px;
+  margin-left: 20px;
+}
+
+.spec .expect-fail {
+  color: red;
+}
+
+.spec .expect-pass {
+  color: green;
 }

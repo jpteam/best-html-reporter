@@ -132,6 +132,47 @@
 
   // Get all specs along with the suites containing them.
   // TODO
+  lib.getSpecsWithSuite = function(root) {
+
+    var suiteSpecs = [];
+    function traverse(ancestors, node) {
+      //console.log(node);
+      if (node.type == 'suite' || node.type == 'root') {
+
+        var childSpecs = [];
+        for (var i = 0; i < node.children.length; i++) {
+          if (node.children[i].type == 'spec') {
+            childSpecs.push(node.children[i]);
+          }
+        }
+
+        if (node.type != 'root') {
+          ancestors.push(node);
+        }
+
+        if (childSpecs.length > 0) {
+          var path = ancestors.map(function(d) { return d.description }).join(' \u279F ');
+          suiteSpecs.push({
+            path: path,
+            specs: childSpecs
+          });
+        }
+
+        for (var i = 0; i < node.children.length; i++) {
+          if (node.children[i].type != 'spec') {
+            traverse(ancestors, node.children[i]);
+          }
+        }
+
+        if (node.type != 'root') {
+          ancestors.pop();
+        }
+      }
+    }
+
+    traverse([], root);
+    return suiteSpecs;
+  }
 
   window.lib = lib;
 })();

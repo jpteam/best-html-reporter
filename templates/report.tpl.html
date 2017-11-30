@@ -64,7 +64,7 @@
 
       <div class="has-tests" ng-if="metrics.totalSpecs > 0">
         <time-chart data="results"></time-chart>
-        <div class="first-fail" ng-if="!allPass">
+        <div class="first-fail spec" ng-if="!allPass">
           <h4>First Failure</h4>
           <div class="path">
             {{firstFail[1]}}
@@ -73,12 +73,28 @@
             {{firstFail[0].description}}
           </div>
 
-          <div class="expect" ng-repeat="exp in firstFail[0].failedExpectations">
-            {{exp.message}}
+          <div class="expect expect-fail" ng-repeat="exp in firstFail[0].failedExpectations">
+            - {{exp.message}}
           </div>
-          <div class="expect" ng-repeat="exp in firstFail[0].passedExpectations">
-            {{exp.message}}
+          <div class="expect expect-pass" ng-repeat="exp in firstFail[0].passedExpectations">
+            - {{exp.message}}
           </div>
+        </div>
+      </div>
+
+      <div class="all-specs">
+        <div class="suite" ng-repeat="suite in allSpecs">
+          <div class="path">{{suite.path}}</div>
+          <div class="spec" ng-repeat="spec in suite.specs">
+            <div class="msg">
+              {{spec.description}}
+            </div>
+
+            <div class="expect expect-fail" ng-repeat="exp in spec.failedExpectations">
+              - {{exp.message}}
+            </div>
+          </div>
+
         </div>
       </div>
 

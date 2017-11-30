@@ -12,4 +12,5 @@ angular.module('app', [])
 
     $scope.metrics = metrics;
     $scope.firstFail = lib.getFirstFail(results);
+    $scope.allSpecs = lib.getSpecsWithSuite(results);
   });
