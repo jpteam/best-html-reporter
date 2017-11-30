@@ -63,8 +63,15 @@ angular.module('app')
             return 'fail';
           }
         })
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide);
+        .on("click", function(d) {
+          window.location.href="#" + d.id;
+          $('.msg').removeClass('active');
+          $("#"+ d.id).addClass('active');
+          $('rect').removeClass('active fill');
+          $(this).addClass('active fill');
+        })
+        .on("mouseover", tip.show)
+        .on("mouseout", tip.hide);
 
 
     }, // link fn
