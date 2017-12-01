@@ -7,9 +7,11 @@ angular.module('app')
 
   return {
     restrict: 'E',
+    transclude: true,
     scope: {
       data: '='
     },
+    template: '<div class="time-chart-container><ng-transclude></ng-transclude></div>',
     link: function (scope, element) {
 
       var width = 1140,
