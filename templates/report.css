@@ -69,14 +69,12 @@ header.title {
 
 .progress-red {
   background-color: #eb8c7f;
-  background-image: url(https://www.transparenttextures.com/patterns/black-twill.png);
   animation-name: red-fade;
   animation-duration: 3s;
 }
 
 .progress-green {
   background-color: #75cc68;
-  background-image: url(https://www.transparenttextures.com/patterns/black-twill.png);
   animation-name: green-fade;
   animation-duration: 3s;
 }
