@@ -93,6 +93,14 @@ header.title {
   fill: red;
 }
 
+.float-chart {
+  position: fixed;
+  bottom: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding-top: 10px;
+}
+
 .no-tests {
   text-align: center;
   background: #eee;
@@ -114,13 +122,15 @@ header.title {
   border-radius: 2px;
   background: white;
   margin: 10px 0;
-  font-size: 12px;
+  font-size: 14px;
+  color: #666;
 }
 
 .suite .path {
   font-size: 14px;
   padding: 10px 5px;
-  color: #888;
+  color: #333;
+  background: #eeeff7;
 }
 
 .spec {
@@ -167,11 +177,21 @@ header.title {
 .spec .num-pass-expects {
   background: #d1e8d1;
   padding-top: 10px;
+  height: 100%;
 }
 
 .spec .num-fail-expects {
   background: #fdd9d9;
   padding-top: 10px;
+  height: 100%;
+}
+
+.spec .time-taken {
+  padding-top: 10px;
+  height: 100%;
+  color: #888;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
 }
 
 .d3-text {
@@ -182,10 +202,10 @@ header.title {
   background: #eee;
 }
 
-.active {
-  background-color: rgb(128, 255, 128);
+.bar-selected {
+  background-color: #f7f7f7;
 }
 
-.time-chart rect.selected {
-  fill: rgb(128, 255, 128);
+.time-chart .bar-selected {
+  fill: #ccc !important;
 }

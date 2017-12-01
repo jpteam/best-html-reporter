@@ -43,8 +43,6 @@ angular.module('app')
         barWidth = 30;
       }
 
-      var prevClickedId, prevClickedTile;
-
       var bar = chart.selectAll("g")
         .data(specs)
         .enter().append("g")
@@ -60,23 +58,16 @@ angular.module('app')
           return height - y(tm) - 20;
         })
         .attr("width", barWidth - 1)
+        .attr("id", function(d) {
+          return 'bar-' + d.id;
+        })
         .attr("class", function(d) {
           if (d.status != 'passed') {
             return 'fail';
           }
         })
-        .on("click", function (d){
-          $('html,body').animate({
-            scrollTop: $("#" + d.id).offset().top},
-            'slow');
-
-          $("#"+ d.id).addClass('active');
-          $(prevClickedId).removeClass('active');
-          $(this).addClass('active selected');
-          $(prevClickedTile).removeClass('active selected');
-
-          prevClickedId = "#"+ d.id;
-          prevClickedTile = this;
+        .on("click", function(d) {
+          scope.$emit('barClicked', d);
         })
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);

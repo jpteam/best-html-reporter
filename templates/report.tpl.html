@@ -94,6 +94,11 @@
               </div>
             </div>
             <div class="pass-fail-box">
+              <div class="time-taken">
+                {{spec | time}}
+              </div>
+            </div>
+            <div class="pass-fail-box">
               <div class="num-pass-expects" ng-if="spec.passedExpectations.length > 0">
                 {{spec.passedExpectations.length}}
               </div>
