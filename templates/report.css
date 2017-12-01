@@ -96,7 +96,7 @@ header.title {
 .float-chart {
   position: fixed;
   bottom: 0;
-  background: white;
+  background: #f7f3f3;
   border: 1px solid #ccc;
   padding-top: 10px;
 }
