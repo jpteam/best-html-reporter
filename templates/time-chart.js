@@ -21,7 +21,7 @@ angular.module('app')
 
 
         var tip = d3.tip()
-        .attr('class', 'd3-text')
+        .attr('class', 'tooltip')
         .html(function(d) {
           return "<span><b>Test Case: </b>" + d.description + "</span>";
         });

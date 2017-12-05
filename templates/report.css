@@ -205,12 +205,13 @@ time-chart {
   border: 1px solid #aaa;
 }
 
-.d3-text {
+.tooltip {
   font-family: 'Roboto', sans-serif;
   font-size: 11px;
   width: 200px;
   padding: 5px;
   background: #eee;
+  border: 1px solid #ccc;
 }
 
 .bar-selected {
