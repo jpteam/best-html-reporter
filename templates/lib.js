@@ -26,8 +26,6 @@
     };
 
     function traverse(node) {
-      console.log(node.type + ' - ' + node.id );
-
       var isPass = true;
       if (node.children) {
         for (var i = 0; i <  node.children.length; i++) {
@@ -111,7 +109,7 @@
           for (var i=1; i < ancestors.length; i++) {
             pathCopy.push(ancestors[i].description);
           }
-          firstFail = [node, pathCopy.join(' > ')];
+          firstFail = [node, pathCopy.join(' \u279F ')];
         }
       } else {
         if (node.children) {
@@ -136,7 +134,6 @@
 
     var suiteSpecs = [];
     function traverse(ancestors, node) {
-      //console.log(node);
       if (node.type == 'suite' || node.type == 'root') {
 
         var childSpecs = [];

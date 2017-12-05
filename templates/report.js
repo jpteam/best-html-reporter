@@ -46,6 +46,5 @@ angular.module('app', [])
       }
 
       prevBar = bar;
-      console.log('bar clicked', bar);
     });
   });
