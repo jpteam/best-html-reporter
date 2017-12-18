@@ -114,10 +114,11 @@ time-chart {
 }
 
 .first-fail {
-  border: 1px solid #ddd;
+  border: 1px solid #f3b6b6;
   border-radius: 2px;
   padding: 10px;
-  background: #fff8f8;
+  background-color: #f9e0e0;
+  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png);
 }
 
 .first-fail .path {
@@ -157,7 +158,9 @@ time-chart {
 
 .first-fail h4 {
   color: #bf2f2f;
-  font-size: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .expect {
