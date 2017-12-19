@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   background: #fafafa;
+  font-size: 14px;
 }
 
 .container {
@@ -88,7 +89,7 @@ time-chart {
 }
 
 .time-chart rect {
-  fill: steelblue;
+  fill: #b2dcbc;
 }
 
 .time-chart rect.fail {
@@ -130,16 +131,23 @@ time-chart {
   border: 1px solid #ccc;
   border-radius: 2px;
   background: white;
-  margin: 10px 0;
   font-size: 14px;
   color: #666;
+}
+.all-specs .suite:not(:first-child) {
+  margin: 10px 0;
 }
 
 .suite .path {
   font-size: 14px;
   padding: 10px 5px;
   color: #333;
-  background: #eeeff7;
+  background: #f3f5f3;
+}
+
+.suite-fail {
+  background-color: #f9e0e0 !important;
+  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png) !important;
 }
 
 .spec {
@@ -190,7 +198,8 @@ time-chart {
 }
 
 .spec .num-fail-expects {
-  background: #fdd9d9;
+  background-color: #f9e0e0 !important;
+  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png) !important;
   padding-top: 10px;
   height: 100%;
 }
@@ -223,4 +232,9 @@ time-chart {
 
 .time-chart .bar-selected {
   fill: #ccc !important;
+}
+
+.controls .only-fail {
+  margin-right: 5px;
+  margin-top: 10px;
 }
