@@ -50,6 +50,11 @@ exports.init = function(config) {
       results.children = [];
       results.type = 'root';
       results.startTime = process.hrtime();
+      results.browserData = {};
+
+      browser.getCapabilities().then(function(caps) {
+        results.browserData = caps;
+      });
 
       suiteStack.push(results);
     },
