@@ -39,6 +39,11 @@ header.title {
   font-size: 12px;
 }
 
+.metric .content {
+  text-align: right;
+  font-size: 10px;
+}
+
 .metric .metric-value {
   text-align: right;
   font-size: 24px;
