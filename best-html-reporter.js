@@ -50,11 +50,6 @@ exports.init = function(config) {
       results.children = [];
       results.type = 'root';
       results.startTime = process.hrtime();
-      results.browserData = {};
-
-      browser.getCapabilities().then(function(caps) {
-        results.browserData = caps;
-      });
 
       suiteStack.push(results);
     },
@@ -98,24 +93,40 @@ exports.init = function(config) {
     },
     
     jasmineDone: function() {
-      results.endTime = process.hrtime();
 
-      var fs = require('fs-extra'),
-        json = JSON.stringify(results, null, 4);
+      function generateReportFiles() {
+        results.endTime = process.hrtime();
 
-      // write out the data.
-      var tpl = fs.readFileSync(__dirname + '/templates/report-data.js','utf8');
-      tpl = tpl.replace('{{results}}', json);
-      fs.writeFileSync(config.reportDir + '/report-data.js', tpl);
+        var fs = require('fs-extra'),
+          json = JSON.stringify(results, null, 4);
 
-      // copy over the template app.
-      _.each([['report.tpl.html', 'report.html'], 'report.js', 'report.css', 'lib.js', 'time-chart.js'], function(file) {
-        if (Array.isArray(file)) {
-          fs.copySync(__dirname + '/templates/' + file[0], config.reportDir + '/' + file[1]);
-        } else {
-          fs.copySync(__dirname + '/templates/' + file, config.reportDir + '/' + file);
-        }
-      });
+        // write out the data.
+        var tpl = fs.readFileSync(__dirname + '/templates/report-data.js','utf8');
+        tpl = tpl.replace('{{results}}', json);
+        fs.writeFileSync(config.reportDir + '/report-data.js', tpl);
+
+        // copy over the template app.
+        _.each([['report.tpl.html', 'report.html'], 'report.js', 'report.css', 'lib.js', 'time-chart.js'], function(file) {
+          if (Array.isArray(file)) {
+            fs.copySync(__dirname + '/templates/' + file[0], config.reportDir + '/' + file[1]);
+          } else {
+            fs.copySync(__dirname + '/templates/' + file, config.reportDir + '/' + file);
+          }
+        });
+      }
+
+      if (typeof browser != 'undefined') {
+        browser.getCapabilities().then(function(caps) {
+          results.browserData = {
+            name: caps.get('browserName'),
+            version: caps.get('version'),
+            platform: caps.get('platform')
+          };
+          generateReportFiles();
+        });
+      } else {
+        generateReportFiles();
+      }
     }
   }
 };
