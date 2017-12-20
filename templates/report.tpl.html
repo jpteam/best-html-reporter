@@ -56,6 +56,14 @@
             <div class="title">Time taken</div>
             <div class="metric-value">{{metrics.timeTaken}}</div>
           </div>
+
+          <div class="metric" ng-if="results.browserData">
+            <div class="title">Browser Specifications</div>
+            <div class="content">Name: {{results.browserData.name}}</div>
+            <div class="content">Version: {{results.browserData.version}}</div>
+            <div class="content">Platform: {{results.browserData.platform}}</div>
+          </div>
+
         </div>
       </header>
 
