@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: #fafafa;
+  background: #f5f5f5;
   font-size: 14px;
 }
 
@@ -115,7 +115,7 @@ time-chart {
 }
 
 .first-fail {
-  border: 1px solid #f3b6b6;
+  border-bottom: 1px solid #f3b6b6;
   border-radius: 2px;
   padding: 10px;
   background-color: #f9e0e0;
@@ -142,7 +142,7 @@ time-chart {
   font-size: 14px;
   padding: 10px 5px;
   color: #333;
-  background: #f3f5f3;
+  background: #edfbed;
 }
 
 .suite-fail {
@@ -192,7 +192,7 @@ time-chart {
 }
 
 .spec .num-pass-expects {
-  background: #d1e8d1;
+  background: #edfbed;
   padding-top: 10px;
   height: 100%;
 }
