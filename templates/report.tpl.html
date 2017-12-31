@@ -25,8 +25,8 @@
       <header>
         <div class="info">
           <div class="report-title">{{results.config.title || 'Test Run'}}</div>
-          <div class="browser-info">Chrome 8.28.55.666, Mac OS X </div>
-          <div class="run-time">Run at: 12/30/2017 10:15 AM</div>
+          <div class="browser-info">Browser info: {{results.browserData.name}} {{results.browserData.version}}, {{results.browserData.platform}}</div>
+          <div class="run-time">Run at: {{results.startDate}}</div>
         </div>
 
         <div class="metrics">
@@ -59,14 +59,7 @@
 
           <div class="metric">
             <div class="title">Time taken</div>
-            <div class="metric-value">{{metrics.timeTaken}}</div>
-          </div>
-
-          <div class="metric" ng-if="results.browserData">
-            <div class="title">Browser Specifications</div>
-            <div class="content">Name: {{results.browserData.name}}</div>
-            <div class="content">Version: {{results.browserData.version}}</div>
-            <div class="content">Platform: {{results.browserData.platform}}</div>
+            <div class="metric-value">{{metrics.timeTaken}} {{metrics.startDate}}</div>
           </div>
 
         </div>
