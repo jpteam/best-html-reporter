@@ -45,7 +45,7 @@ exports.init = function(config) {
   return {
 
     jasmineStarted: function(suiteInfo) {
-      results.startDate = new Date().toString();
+      results.reportTime = new Date().toString();
       results.config = config;
       results.suiteInfo = suiteInfo;
       results.children = [];
