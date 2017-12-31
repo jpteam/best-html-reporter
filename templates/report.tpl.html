@@ -10,7 +10,7 @@
         window.results = result;
       }
     </script>
-    <script src="report-data.js"></script>
+    <script src="report-data-test3.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -23,7 +23,12 @@
   <body>
     <div class="container" ng-controller="ReportController">
       <header>
-        <div class="report-title">{{results.config.title}}</div>
+        <div class="info">
+          <div class="report-title">{{results.config.title || 'Test Run'}}</div>
+          <div class="browser-info">Chrome 8.28.55.666, Mac OS X </div>
+          <div class="run-time">Run at: 12/30/2017 10:15 AM</div>
+        </div>
+
         <div class="metrics">
           <div class="metric">
             <div class="title">Suites</div>

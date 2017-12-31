@@ -18,9 +18,14 @@ header.title {
   width: 33%;
 }
 
-.report-title {
+.info .report-title {
   margin-top: 10px;
   font-size: 18px;
+}
+
+.info .browser-info, .info .run-time {
+  font-size: 12px;
+  color: #666;
 }
 
 .metrics {
