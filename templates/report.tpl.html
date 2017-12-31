@@ -86,10 +86,16 @@
         </div>
       </div>
 
+      <div class="controls">
+        <label ng-if="!allPass" class="checkbox-inline">
+          <input type="checkbox" ng-model="$parent.showFailOnly" class="only-fail" value="onlyFail">Show failures only
+        </label>
+      </div>
+
       <div class="all-specs">
-        <div class="suite" ng-repeat="suite in allSpecs">
-          <div class="path">{{suite.path}}</div>
-          <div class="spec" ng-repeat="spec in suite.specs">
+        <div class="suite" ng-if="!showFailOnly || !suite.isPass" ng-repeat="suite in allSpecs">
+          <div class="path" ng-class="{'suite-fail':!suite.isPass}">{{suite.path}}</div>
+          <div class="spec" ng-if="!showFailOnly || !spec.isPass" ng-repeat="spec in suite.specs">
             <div class="desc">
               <div id="{{spec.id}}" class="msg">
                 {{spec.description}}

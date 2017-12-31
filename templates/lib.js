@@ -58,6 +58,7 @@
           break;
       }
 
+      node.isPass = isPass;
       return isPass;
     }
 
@@ -151,7 +152,8 @@
           var path = ancestors.map(function(d) { return d.description }).join(' \u279F ');
           suiteSpecs.push({
             path: path,
-            specs: childSpecs
+            specs: childSpecs,
+            isPass: node.isPass
           });
         }
 
