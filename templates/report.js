@@ -32,10 +32,18 @@ angular.module('app', [])
 
     var prevBar = null;
     $scope.$on('barClicked', function(e, bar) {
-      $('html,body').animate(
-        { scrollTop: $("#" + bar.id).offset().top },
-        'slow'
-      );
+
+      if ($('.time-chart.float-chart').is(":visible") == false) {
+        $('html,body').animate(
+          { scrollTop: $("#" + bar.id).offset().top - 290},
+          'slow'
+        );
+      } else {
+        $('html,body').animate(
+          { scrollTop: $("#" + bar.id).offset().top - $('.time-chart.float-chart').outerHeight()},
+          'slow'
+        );
+      }
 
       $('#' + bar.id).parent().addClass('bar-selected');
       $('#bar-' + bar.id).addClass('bar-selected');
