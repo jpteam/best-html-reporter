@@ -248,3 +248,28 @@ time-chart {
   margin-right: 5px;
   margin-top: 10px;
 }
+
+#lightbox {
+    position:fixed; /* keeps the lightbox window in the current viewport */
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url(https://7551bdfc54adf45425bb-e1819ba959867bdb3382b3652a5f5ff1.ssl.cf5.rackcdn.com/stickers/554/f92/1430321453_Meg_stickers_color042815_014.png) !important;
+    text-align:center;
+}
+
+#lightbox p {
+    text-align:right;
+    color:#fff;
+    margin-right:20px;
+    font-size:12px;
+}
+
+#lightbox img {
+    box-shadow:0 0 25px #111;
+    -webkit-box-shadow:0 0 25px #111;
+    -moz-box-shadow:0 0 25px #111;
+    max-width:940px;
+    margin-top: 48px;
+}
