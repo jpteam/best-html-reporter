@@ -107,7 +107,7 @@ exports.init = function(config) {
         fs.writeFileSync(config.reportDir + '/report-data.js', tpl);
 
         // copy over the template app.
-        _.each([['report.tpl.html', 'report.html'], 'report.js', 'report.css', 'lib.js', 'time-chart.js'], function(file) {
+        _.each([['report.tpl.html', 'report.html'], 'report.js', 'report.css', 'lib.js', 'time-chart.js', 'light-box.js'], function(file) {
           if (Array.isArray(file)) {
             fs.copySync(__dirname + '/templates/' + file[0], config.reportDir + '/' + file[1]);
           } else {
