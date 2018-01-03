@@ -10,7 +10,7 @@
         window.results = result;
       }
     </script>
-    <script src="report-data-test3.js"></script>
+    <script src="report-data.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -19,6 +19,7 @@
     <script src="report.js"></script>
     <script src="lib.js"></script>
     <script src="time-chart.js"></script>
+    <script src="light-box.js"></script>
   </head>
   <body>
     <div class="container" ng-controller="ReportController">
@@ -107,8 +108,8 @@
             </div>
 
             <div class="pass-fail-box" ng-if="spec.screenshot">
-              <div class="screenshot">
-                <a href="{{spec.screenshot}}" target="_blank">
+              <div class="screenshot" ng-click="lightBox(spec.screenshot)">
+                <a href="#">
                   <img src="{{spec.screenshot}}" class="thumb">
                 </a>
               </div>
@@ -130,6 +131,12 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div ng-if="lightBoxShow" id="lightbox">
+        <div id="content">
+          <light-box image="lightBoxImage"></light-box>
         </div>
       </div>
 
