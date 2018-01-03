@@ -25,7 +25,7 @@ angular.module('app', [])
 
       if (pos > 50) {
         $('.time-chart').addClass('float-chart');
-      } else {
+      } else if (pos == 0){
         $('.time-chart').removeClass('float-chart');
       }
     });
@@ -55,4 +55,12 @@ angular.module('app', [])
 
       prevBar = bar;
     });
+
+    $scope.lightBox = function(image) {
+
+      $scope.lightBoxShow = true;
+      $scope.lightBoxImage = image;
+
+    };
+
   });
