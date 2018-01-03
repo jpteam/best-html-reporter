@@ -23,7 +23,7 @@ angular.module('app', [])
     $(window).scroll(function() {
       var pos = $(window).scrollTop();
 
-      if (pos > 50) {
+      if (pos > 120) {
         $('.time-chart').addClass('float-chart');
       } else if (pos == 0){
         $('.time-chart').removeClass('float-chart');
