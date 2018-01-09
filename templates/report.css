@@ -116,7 +116,7 @@ time-chart {
 }
 
 .time-chart rect.fail {
-  fill: red;
+  fill:#e74c3c;
 }
 
 .float-chart {
