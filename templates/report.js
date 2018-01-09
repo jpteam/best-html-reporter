@@ -20,14 +20,22 @@ angular.module('app', [])
     $scope.firstFail = lib.getFirstFail(results);
     $scope.allSpecs = lib.getSpecsWithSuite(results);
 
+    var prevPos = 0;
+
     $(window).scroll(function() {
-      var pos = $(window).scrollTop();
+      var pos = $(window).scrollTop(),
+        windowHeight = $(window).height(),
+        documentHeight = $(document).height();
+
+      console.log(pos, windowHeight, documentHeight);
 
       if (pos > 120) {
         $('.time-chart').addClass('float-chart');
       } else if (pos == 0){
         $('.time-chart').removeClass('float-chart');
       }
+
+      prevPos = pos;
     });
 
     var prevBar = null;
