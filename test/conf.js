@@ -23,12 +23,7 @@ exports.config =
     
     jasmine.getEnv().addReporter(bestReporter.init({
       reportDir: '/tmp/reports',
-      screenshots: "fail",
-      screenshotCB: function(file) {
-        // take screenshot
-        console.log('Take error screenshot ' + file);
-      },
-      xyz: 122
+      screenshots: "fail"
     }));
   }
 };

@@ -1,42 +1,145 @@
 <!doctype html>
 <html ng-app="app">
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <script>
-    function registerResult(result) {
-      window.results = result;
-    }
-  </script>
-  <script src="report-data.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-  <script src="report.js"></script>
-</head>
-<body>
-<div class="container" ng-controller="ReportController">
-  <header>
-    <div class="title">DSP 2.0 Test Report</div>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="report.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
-    <div class="metric">
-      <div class="title">Suites</div>
-      <div class="metric-value">{{results.suites.length}}</div>
+    <script>
+      function registerResult(result) {
+        window.results = result;
+      }
+    </script>
+    <script src="report-data.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    <script src="report.js"></script>
+    <script src="lib.js"></script>
+    <script src="time-chart.js"></script>
+    <script src="light-box.js"></script>
+  </head>
+  <body>
+    <div class="container" ng-controller="ReportController">
+      <header>
+        <div class="info">
+          <div class="report-title">{{results.config.title || 'Test Run'}}</div>
+          <div class="browser-info">Browser info: {{results.browserData.name}} {{results.browserData.version}}, {{results.browserData.platform}}</div>
+          <div class="run-time">Run at: {{results.reportTime}}</div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="title">Suites</div>
+            <div class="metric-value">{{metrics.passedSuites}} / {{metrics.totalSuites}}</div>
+            <div class="thin-progress-bar" ng-if="metrics.totalSuites > 0">
+              <div class="progress-green" style="width:{{(metrics.passedSuites / metrics.totalSuites) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalSuites - metrics.passedSuites) / metrics.totalSuites) * 100}}%"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="title">Specs</div>
+            <div class="metric-value">{{metrics.passedSpecs}} / {{metrics.totalSpecs}}</div>
+            <div class="thin-progress-bar" ng-if="metrics.totalSpecs > 0">
+              <div class="progress-green" style="width:{{(metrics.passedSpecs / metrics.totalSpecs) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalSpecs - metrics.passedSpecs) / metrics.totalSpecs) * 100}}%"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="title">Expectations</div>
+            <div class="metric-value">{{metrics.passedExp}} / {{metrics.totalExp}}</div>
+            <div class="thin-progress-bar" ng-if="metrics.totalExp > 0">
+              <div class="progress-green" style="width:{{(metrics.passedExp / metrics.totalExp) * 100}}%"></div>
+              <div class="progress-red" style="width:{{((metrics.totalExp - metrics.passedExp) / metrics.totalExp) * 100}}%"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="title">Time taken</div>
+            <div class="metric-value">{{metrics.timeTaken}} {{metrics.startDate}}</div>
+          </div>
+
+        </div>
+      </header>
+
+      <div class="no-tests" ng-if="metrics.totalSpecs == 0">
+        There are no tests defined!
+      </div>
+
+      <div class="has-tests" ng-if="metrics.totalSpecs > 0">
+        <time-chart data="results"></time-chart>
+        <div class="first-fail" ng-if="!allPass">
+          <h4>First Failure</h4>
+          <div class="path">
+            {{firstFail[1]}}
+          </div>
+          <div class="msg">
+            {{firstFail[0].description}}
+          </div>
+
+          <div class="expect expect-fail" ng-repeat="exp in firstFail[0].failedExpectations">
+            {{exp.message}}
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label ng-if="!allPass" class="checkbox-inline">
+          <input type="checkbox" ng-model="$parent.showFailOnly" class="only-fail" value="onlyFail">Show failures only
+        </label>
+      </div>
+
+      <div class="all-specs">
+        <div class="suite" ng-if="!showFailOnly || !suite.isPass" ng-repeat="suite in allSpecs">
+          <div class="path" ng-class="{'suite-fail':!suite.isPass}">{{suite.path}}</div>
+          <div class="spec" ng-if="!showFailOnly || !spec.isPass" ng-repeat="spec in suite.specs">
+            <div class="desc">
+              <div id="{{spec.id}}" class="msg">
+                {{spec.description}}
+              </div>
+
+              <div class="expect expect-fail" ng-repeat="exp in spec.failedExpectations">
+                {{exp.message}}
+              </div>
+            </div>
+
+            <div class="pass-fail-box" ng-if="spec.screenshot">
+              <div class="screenshot" ng-click="lightBox(spec.screenshot)">
+                <a href="#">
+                  <img src="{{spec.screenshot}}" class="thumb">
+                </a>
+              </div>
+            </div>
+
+            <div class="pass-fail-box">
+              <div class="time-taken">
+                {{spec | time}}
+              </div>
+            </div>
+            <div class="pass-fail-box">
+              <div class="num-pass-expects" ng-if="spec.passedExpectations.length > 0">
+                {{spec.passedExpectations.length}}
+              </div>
+            </div>
+            <div class="pass-fail-box">
+              <div class="num-fail-expects" ng-if="spec.failedExpectations.length > 0">
+                {{spec.failedExpectations.length}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="lightBoxShow" id="lightbox">
+        <div id="content">
+          <light-box image="lightBoxImage"></light-box>
+        </div>
+      </div>
+
     </div>
-
-    <div class="metric">
-      <div class="title">Test Cases</div>
-      <div class="metric-value">17</div>
-    </div>
-
-    <div class="metric">
-      <div class="title">Expectations</div>
-      <div class="metric-value">25</div>
-    </div>
-
-    <h3>Data:</h3>
-
-    <pre>
-    {{jsonData}}
-    </pre>
-  </header>
-</div>
-</body>
+  </body>
 </html>

@@ -1,0 +1,334 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f5f5f5;
+  font-size: 14px;
+}
+
+.container {
+  padding: 0;
+  background-color: #fff;
+}
+
+header {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* background: linear-gradient(154deg, #008fe2 0, #00b29c 100%); */
+  background: #34495e;
+  padding: 10px;
+  margin: 0;
+}
+
+header.title {
+  width: 33%;
+}
+
+.info .report-title {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.info .browser-info, .info .run-time {
+  font-size: 9px;
+  font-weight: 100;
+  color: #88accf;
+  line-height: 12px;
+}
+
+.metrics {
+  display: flex;
+  width: 60%;
+}
+
+.metric {
+  -webkit-flex: 1;
+  flex: 1;
+  padding: 0 6px;
+}
+
+.metric .title {
+  text-align: right;
+  font-size: 10px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.metric .content {
+  text-align: right;
+  font-size: 10px;
+}
+
+.metric .metric-value {
+  text-align: right;
+  font-size: 24px;
+}
+
+@keyframes bar {
+  from {width: 0;}
+  to {width: 100%;}
+}
+
+.thin-progress-bar {
+  height: 4px;
+  display: -webkit-flex;
+  display: flex;
+  animation-name: bar;
+  animation-duration: 3s;
+}
+
+@keyframes red-fade {
+  from {background-color: white;}
+  to {background-color: #eb8c7f;}
+}
+
+@keyframes green-fade {
+  from {background-color: white;}
+  to {background-color: #75cc68;}
+}
+
+.progress-red {
+  background-color: #eb8c7f;
+  animation-name: red-fade;
+  animation-duration: 3s;
+}
+
+.progress-green {
+  background-color: #75cc68;
+  animation-name: green-fade;
+  animation-duration: 3s;
+}
+
+time-chart {
+  display: block;
+}
+
+.time-chart {
+  margin-top: 10px;
+  background-color: #fff;
+  background-image: linear-gradient(whitesmoke 2px, transparent 2px), linear-gradient(90deg, whitesmoke 2px, transparent 2px), linear-gradient(#f5f5f5 1px, transparent 1px), linear-gradient(90deg, #f5f5f5 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+.time-chart rect {
+  fill: #b2dcbc;
+}
+
+.time-chart rect.fail {
+  fill:#e74c3c;
+}
+
+.float-chart {
+  background-color: #fff;
+  position: fixed;
+  margin-top: 0;
+  top: 0;
+  padding-top: 10px;
+  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+}
+
+.no-tests {
+  text-align: center;
+  background: #eee;
+  margin-top: 50px;
+  border: 1px solid #ccc;
+  font-size: 36px;
+  padding: 50px;
+}
+
+.first-fail {
+  border-left: 2px solid #e84b3c;
+  border-radius: 2px;
+  padding: 10px;
+  margin: 5px;
+  background-color: #f9e0e0;
+  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png);
+}
+
+.first-fail .path {
+  font-size: 14px;
+  color: #34495e;
+  font-weight: 400;
+}
+
+.msg {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.msg {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.controls {
+  display: inline-block;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.controls label {
+  float: right;
+  margin: 0;
+}
+
+.suite {
+  border-radius: 2px;
+  background: white;
+  font-size: 13px;
+  padding: 5px;
+  color: #34495e;
+}
+.all-specs .suite:not(:first-child) {
+  margin: 10px 0;
+}
+
+.suite .path {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px;
+  color: #16a085;
+  background: #edfbee;
+  border-left: 2px solid;
+  letter-spacing: 0.75px;
+}
+
+.suite .path:after {
+  content:"\f058";
+  float: right;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 18px;
+  padding-top: 2px;
+}
+
+.suite .suite-fail:after {
+  content: "\f057";
+}
+
+.suite .suite-fail {
+  color: #e74c3c;
+  background-color: #f9e0e0;
+  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png) !important;
+}
+
+.spec {
+  display: flex;
+}
+
+.spec:nth-child(odd) {
+  background-color: aliceblue;
+}
+
+.spec .desc {
+  padding: 8px 5px;
+}
+
+.spec .path {
+  font-size: 11px;
+  color: #888;
+}
+
+.first-fail h4 {
+  color: #e84b3c;
+  font-size: 24px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.first-fail .expect-fail {
+  margin-left: 10px;
+}
+
+.expect {
+  font-size: 12px;
+  margin-left: 20px;
+}
+
+.expect-fail {
+  color: red;
+  padding-top: 5px;
+  font-weight: 100;
+}
+
+.spec .desc {
+  flex-grow: 1;
+}
+
+.spec .pass-fail-box {
+  flex: 0 0 70px;
+  text-align: center;
+}
+
+.spec .num-pass-expects {
+  background: #edfbed;
+  padding-top: 10px;
+  height: 100%;
+}
+
+.spec .num-fail-expects {
+  background-color: #f9e0e0 !important;
+  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png) !important;
+  padding-top: 10px;
+  height: 100%;
+}
+
+.spec .time-taken {
+  padding-top: 10px;
+  height: 100%;
+  color: #888;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.spec .thumb {
+  width: 100px;
+  border: 1px solid #aaa;
+}
+
+.tooltip {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  width: 200px;
+  padding: 5px;
+  background: #eee;
+  border: 1px solid #ccc;
+}
+
+.bar-selected {
+  background-color: #f7f7f7;
+}
+
+.time-chart .bar-selected {
+  fill: #ccc !important;
+}
+
+.controls .only-fail {
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+#lightbox {
+    position:fixed; /* keeps the lightbox window in the current viewport */
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url(https://7551bdfc54adf45425bb-e1819ba959867bdb3382b3652a5f5ff1.ssl.cf5.rackcdn.com/stickers/554/f92/1430321453_Meg_stickers_color042815_014.png) !important;
+    text-align:center;
+}
+
+#lightbox p {
+    text-align:right;
+    color:#fff;
+    margin-right:20px;
+    font-size:12px;
+}
+
+#lightbox img {
+    box-shadow:0 0 25px #111;
+    -webkit-box-shadow:0 0 25px #111;
+    -moz-box-shadow:0 0 25px #111;
+    max-width:940px;
+    margin-top: 48px;
+}

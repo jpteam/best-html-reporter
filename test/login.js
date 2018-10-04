@@ -24,8 +24,18 @@ describe('TEST', function(){
     browser.navigate().back().then(function() {
       element(By.id('start')).all(By.tagName('a')).get(1).click().then(function() {
         expect(browser.getCurrentUrl()).toMatch('sfvbjdfv');
+        expect(browser.getCurrentUrl()).toMatch('sdjvhskv');
       });
     });
+  });
+
+});
+
+describe('Extra valid suite', function() {
+
+  it('browser refresh', function() {
+    browser.refresh()
+    expect(browser.getCurrentUrl()).toContain('https://www.google.co.in/');
   });
 
 });
