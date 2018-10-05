@@ -1,5 +1,5 @@
 /**
- * Jasmine test case's without browser.
+ * Jasmine test cases without browser.
  * BEST-HTML-REPORTER
  * (c) C1X Inc. 2017
  */
@@ -17,5 +17,6 @@ describe('data', function() {
     var a = 1, b = 2;
     expect(a + b).toBe(3);
   });
+
 
 });

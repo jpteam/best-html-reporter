@@ -15,7 +15,7 @@ header {
   justify-content: space-between;
   align-items: flex-end;
   /* background: linear-gradient(154deg, #008fe2 0, #00b29c 100%); */
-  background: #34495e;
+  background: #000;
   padding: 10px;
   margin: 0;
 }
@@ -32,7 +32,7 @@ header.title {
 .info .browser-info, .info .run-time {
   font-size: 9px;
   font-weight: 100;
-  color: #88accf;
+  color: #ddd;
   line-height: 12px;
 }
 
@@ -79,7 +79,7 @@ header.title {
 
 @keyframes red-fade {
   from {background-color: white;}
-  to {background-color: #eb8c7f;}
+  to {background-color: #cc0300;}
 }
 
 @keyframes green-fade {
@@ -88,13 +88,13 @@ header.title {
 }
 
 .progress-red {
-  background-color: #eb8c7f;
+  background-color: #cc0300;
   animation-name: red-fade;
   animation-duration: 3s;
 }
 
 .progress-green {
-  background-color: #75cc68;
+  background-color: #03cc00;
   animation-name: green-fade;
   animation-duration: 3s;
 }
@@ -112,7 +112,7 @@ time-chart {
 }
 
 .time-chart rect {
-  fill: #b2dcbc;
+  fill: #03cc00;
 }
 
 .time-chart rect.fail {
@@ -182,10 +182,8 @@ time-chart {
 }
 
 .suite {
-  border-radius: 2px;
   background: white;
   font-size: 13px;
-  padding: 5px;
   color: #34495e;
 }
 .all-specs .suite:not(:first-child) {
@@ -198,7 +196,6 @@ time-chart {
   padding: 8px;
   color: #16a085;
   background: #edfbee;
-  border-left: 2px solid;
   letter-spacing: 0.75px;
 }
 
