@@ -14,7 +14,7 @@ var _ = require('underscore'),
 exports.init = function(config) {
   
   var results = {},
-    suiteStack = [];
+    suiteStack = [], specInfo = {};
 
   config.screenshots = config.screenshots || 'none';
 
@@ -44,7 +44,7 @@ exports.init = function(config) {
 
   return {
 
-    jasmineStarted: function(suiteInfo) {
+    jasmineStarted: function(specInfo) {
       results.reportTime = new Date().toString();
       results.config = config;
       results.suiteInfo = suiteInfo;
@@ -70,10 +70,13 @@ exports.init = function(config) {
     specStarted: function(result) {
       result.type = 'spec';
       result.startTime = process.hrtime();
+      specInfo[result.id] = result;
     },
     
     specDone: function(result) {
       result.endTime = process.hrtime();
+      result.type = specInfo[result.id].type;
+      result.startTime = specInfo[result.id].startTime;
       currentSuite.children.push(result);
       
       if (config.screenshots !== 'none') {
