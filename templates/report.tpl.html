@@ -98,7 +98,12 @@
 
   <div class="all-specs">
     <div class="suite" ng-if="!showFailOnly || !suite.isPass" ng-repeat="suite in allSpecs">
-      <div class="path" ng-class="{'suite-fail':!suite.isPass}">{{suite.path}}</div>
+      <div>
+        <div class="path">
+          {{suite.path}}
+        </div>
+        <div class="indicator" ng-class="{'show-fail':!suite.isPass}" >{{!suite.isPass ? 'Failed': 'Success'}}</div>
+      </div>
       <div class="spec" ng-if="!showFailOnly || !spec.isPass" ng-repeat="spec in suite.specs">
         <div class="desc">
           <div id="{{spec.id}}" class="msg">
