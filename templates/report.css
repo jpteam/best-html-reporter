@@ -153,11 +153,11 @@ time-chart {
 }
 
 .time-chart rect {
-  fill: #03cc00;
+  fill: #21981d;
 }
 
 .time-chart rect.fail {
-  fill:#e74c3c;
+  fill:#c53f3f;
 }
 
 .float-chart {
@@ -187,7 +187,7 @@ time-chart {
 
 .first-fail {
   padding: 10px;
-  background-color: #c00;
+  background-color: #c53f3f;
   border-top: 2px solid #00;
   border-bottom: 4px solid #f5cccc;
   color: white;
@@ -212,13 +212,8 @@ time-chart {
 }
 
 .msg {
-  font-size: 12px;
-  font-weight: 100;
-}
-
-.msg {
-  font-size: 12px;
-  font-weight: 100;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .controls {
@@ -242,30 +237,38 @@ time-chart {
 }
 
 .suite .path {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 21px;
+  font-weight: 600;
   padding: 8px;
-  color: #16a085;
-  background: #edfbee;
+  color: #fff;
+  background-color: #1f9590;
   letter-spacing: 0.75px;
-}
-
-.suite .path:after {
-  content:"\f058";
-  float: right;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: 18px;
-  padding-top: 2px;
-}
-
-.suite .suite-fail:after {
-  content: "\f057";
+  width: 76%;
+  display: inline-block;
 }
 
 .suite .suite-fail {
-  color: #e74c3c;
-  background-color: #f9e0e0;
-  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png) !important;
+  background-color: #16929d;
+  display: inline-block;
+  width: 76%;
+}
+
+.suite .indicator {
+  background-color: #c53f3f;
+  height: 98%;
+  width: 24%;
+  float: right;
+  display: inline-block;
+  content: unset;
+  font-size: 21px;
+  font-weight: 600;
+  padding: 8px;
+  text-align: right;
+  color: white;
+}
+
+.show-fail {
+  background-color: green;
 }
 
 .spec {
@@ -273,7 +276,7 @@ time-chart {
 }
 
 .spec:nth-child(odd) {
-  background-color: aliceblue;
+  background-color: #d8d8d8;
 }
 
 .spec .desc {
@@ -327,7 +330,8 @@ time-chart {
 
 .spec .thumb {
   width: 100px;
-  border: 1px solid #aaa;
+  border: 2px solid transparent;
+  padding: 10px;
 }
 
 .tooltip {
