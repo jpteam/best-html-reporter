@@ -138,18 +138,26 @@ time-chart {
 }
 
 .first-fail {
-  border-left: 2px solid #e84b3c;
-  border-radius: 2px;
   padding: 10px;
-  margin: 5px;
-  background-color: #f9e0e0;
-  background-image: url(https://www.transparenttextures.com/patterns/sneaker-mesh-fabric.png);
+  background-color: #fff5f5;
+  border-top: 2px solid #ffb9b9;
+  border-bottom: 2px solid #ffb9b9;
 }
 
 .first-fail .path {
   font-size: 14px;
   color: #34495e;
   font-weight: 400;
+}
+
+.first-fail h4 {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.first-fail .expect-fail {
+  margin-left: 10px;
 }
 
 .msg {
@@ -227,17 +235,6 @@ time-chart {
 .spec .path {
   font-size: 11px;
   color: #888;
-}
-
-.first-fail h4 {
-  color: #e84b3c;
-  font-size: 24px;
-  font-weight: 100;
-  text-transform: uppercase;
-}
-
-.first-fail .expect-fail {
-  margin-left: 10px;
 }
 
 .expect {
