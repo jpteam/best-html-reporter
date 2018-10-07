@@ -1,7 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   /*background: #f5f5f5;*/
-  font-size: 14px;
+  font-size: 12px;
   /*background: url("https://www.toptal.com/designers/subtlepatterns/patterns/pixel_weave.png")*/
 
   /*background-color: #c9c2ad;*/
@@ -159,6 +159,7 @@ time-chart {
 .time-chart {
   margin-top: 10px;
   background-color: #fff;
+  z-index: 1000;
   background-image: linear-gradient(whitesmoke 2px, transparent 2px), linear-gradient(90deg, whitesmoke 2px, transparent 2px), linear-gradient(#f5f5f5 1px, transparent 1px), linear-gradient(90deg, #f5f5f5 1px, transparent 1px);
   background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
   background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
@@ -188,6 +189,16 @@ time-chart {
   border: 1px solid #ccc;
   font-size: 36px;
   padding: 50px;
+}
+
+.second-row {
+  display: flex
+}
+
+.second-row .first,
+.second-row .pie
+ {
+  flex-grow: 1
 }
 
 .alert-image {
@@ -223,11 +234,6 @@ time-chart {
   margin-left: 10px;
 }
 
-.msg {
-  font-size: 14px;
-  font-weight: 500;
-}
-
 .controls {
   display: inline-block;
   padding: 0 10px;
@@ -248,35 +254,39 @@ time-chart {
   margin: 10px 0;
 }
 
-.suite .path {
-  font-size: 21px;
+.suite-header {
+  border-bottom: 1px solid #888;
+  display: flex;
+}
+
+.suite-header.fail {
+  border-bottom: 2px solid #c53f3f;
+}
+
+.suite-header.pass {
+  border-bottom: 2px solid #009688;
+}
+
+.suite-header .path {
+  font-size: 14px;
   font-weight: 600;
   padding: 8px;
-  color: #fff;
-  background-color: #1f9590;
   letter-spacing: 0.75px;
-  width: 76%;
-  display: inline-block;
+  flex-grow: 1
 }
 
-.suite .suite-fail {
-  background-color: #16929d;
-  display: inline-block;
-  width: 76%;
+.suite-header.fail .indicator {
+  flex: 0 0 150px;
+  background: #ffdddd;
+  border-radius: 10px 0 0 0;
+  padding-top: 8px;
+  font-size: 16px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-.suite .indicator {
-  background-color: #c53f3f;
-  height: 98%;
-  width: 24%;
-  float: right;
-  display: inline-block;
-  content: unset;
-  font-size: 21px;
-  font-weight: 600;
-  padding: 8px;
-  text-align: right;
-  color: white;
+.suite-header.pass .indicator {
+  flex: 0 0 150px;
 }
 
 .show-fail {
@@ -285,19 +295,19 @@ time-chart {
 
 .spec {
   display: flex;
+  border-bottom: 1px solid #ccc;
+  color: #666;
+  font-size: 12px;
+  font-weight: 200;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.spec:nth-child(odd) {
-  background-color: #d8d8d8;
+.spec:last-child {
+  border-bottom: none;
 }
 
 .spec .desc {
   padding: 8px 5px;
-}
-
-.spec .path {
-  font-size: 11px;
-  color: #888;
 }
 
 .expect {
@@ -320,9 +330,24 @@ time-chart {
 }
 
 .spec .num-pass-expects {
-  background: #edfbed;
-  padding-top: 10px;
+  background: #f9e0e0;
   height: 100%;
+}
+
+.spec .red-bar {
+  z-index: 10;
+  background: #edfbed;
+  position: relative;
+  float: left;
+  height: 100%;
+}
+
+.spec .pass-fail {
+  position: absolute;
+  padding-left: 20px;
+  padding-top: 10px;
+  text-align: center;
+  z-index: 100;
 }
 
 .spec .num-fail-expects {
