@@ -6,12 +6,12 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
   <script>
-      function registerResult(result) {
-        window.results = result;
-      }
-    </script>
+    function registerResult(result) {
+      window.results = result;
+    }
+  </script>
   <script src="report-data.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -62,7 +62,6 @@
         <div class="title">Time taken</div>
         <div class="metric-value">{{metrics.timeTaken}} {{metrics.startDate}}</div>
       </div>
-
     </div>
   </header>
 
@@ -98,8 +97,8 @@
 
   <div class="all-specs">
     <div class="suite" ng-if="!showFailOnly || !suite.isPass" ng-repeat="suite in allSpecs">
-      <div>
-        <div class="path">
+      <div class="path">
+        <div class="header">
           {{suite.path}}
         </div>
         <div class="indicator" ng-class="{'show-fail':!suite.isPass}" >{{!suite.isPass ? 'Failed': 'Success'}}</div>
@@ -128,6 +127,18 @@
             {{spec | time}}
           </div>
         </div>
+        <span class="sparkline">&nbsp;</span>
+        <script>
+          $(document).ready(function () {
+            (function() {
+              $(".sparkline")[0].sparkline([1,1,2], {
+              type: 'pie',
+              width: '50',
+              height: '50',
+              borderColor: '#ff56aa'});
+            }())
+          })
+        </script>
         <div class="pass-fail-box">
           <div class="num-pass-expects" ng-if="spec.passedExpectations.length > 0">
             {{spec.passedExpectations.length}}
