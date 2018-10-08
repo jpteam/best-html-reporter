@@ -62,6 +62,7 @@
         <div class="title">Time taken</div>
         <div class="metric-value">{{metrics.timeTaken}} {{metrics.startDate}}</div>
       </div>
+
     </div>
   </header>
 
@@ -130,18 +131,6 @@
             {{spec | time}}
           </div>
         </div>
-        <span class="sparkline">&nbsp;</span>
-        <script>
-          $(document).ready(function () {
-            (function() {
-              $(".sparkline")[0].sparkline([1,1,2], {
-              type: 'pie',
-              width: '50',
-              height: '50',
-              borderColor: '#ff56aa'});
-            }())
-          })
-        </script>
         <div class="pass-fail-box">
           <div class="num-pass-expects">
             <div class="red-bar" style="width: {{spec.passedExpectations.length * 70 / (spec.passedExpectations.length + spec.failedExpectations.length)}}px"></div>
