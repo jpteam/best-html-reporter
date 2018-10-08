@@ -46,7 +46,7 @@ describe('TEST', () => {
   }
 
   let testRun = 0;
-  while (testRun < 10) {
+  while (testRun < 2) {
     spec(); testRun++;
   }
 });
